@@ -13,7 +13,7 @@ template_pyfar_package
 
 Template to generate and update pyfar packages.
 
-This template is used to keep all pyfar packages constistent and provide a good staring point for new packages. It uses copier.
+This template is used to keep all pyfar packages consistent and provide a good staring point for new packages. It uses copier.
 
 .. grid:: 1 2 2 2
     :gutter: 4

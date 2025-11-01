@@ -10,7 +10,6 @@ import os
 import sys
 import urllib3
 import shutil
-import numpy as np
 sys.path.insert(0, os.path.abspath('..'))
 
 import template_pyfar_package  # noqa
@@ -23,7 +22,6 @@ extensions = [
     'sphinx.ext.viewcode',
     'sphinx.ext.napoleon',
     'sphinx.ext.autosummary',
-    'matplotlib.sphinxext.plot_directive',
     'sphinx.ext.mathjax',
     'sphinx.ext.intersphinx',
     'autodocsumm',
