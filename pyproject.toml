@@ -25,10 +25,8 @@ classifiers = [
     
 ]
 dependencies = [
-    
-    
-    
-    
+    "copier",
+    "numpy",
 ]
 
 [project.optional-dependencies]
@@ -41,6 +39,7 @@ deploy = [
     ]
 tests = [
     "pytest",
+    "pytest-copie",
     "pytest-cov",
     "watchdog",
     "ruff==0.8.3",
