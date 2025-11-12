@@ -1,19 +1,16 @@
 <h1 align="center">
-<img src="https://github.com/pyfar/gallery/raw/main/docs/{{ cookiecutter.logo_path_gallery }}" width="300">
+<img src="https://github.com/pyfar/gallery/raw/main/docs/{{ logo_path_gallery }}" width="300">
 </h1><br>
 
-{% set is_open_source = cookiecutter.open_source_license != 'Not open source' -%}
-{% if is_open_source %}
-{% if cookiecutter.add_pyup_badge == 'y' %}
-[![PyPI version](https://badge.fury.io/py/{{ cookiecutter.project_slug }}.svg)](https://badge.fury.io/py/{{ cookiecutter.project_slug }})
-{%- endif %}
-[![Documentation Status](https://readthedocs.org/projects/{{ cookiecutter.project_slug }}/badge/?version=latest)](https://{{ cookiecutter.project_slug }}.readthedocs.io/en/latest/?badge=latest)
-[![CircleCI](https://circleci.com/gh/{{ cookiecutter.git_username }}/{{ cookiecutter.project_slug | replace("_", "-") }}.svg?style=shield)](https://circleci.com/gh/{{ cookiecutter.git_username }}/{{ cookiecutter.project_slug | replace("_", "-") }})
+{% if add_pyup_badge == 'y' %}
+[![PyPI version](https://badge.fury.io/py/{{ project_slug }}.svg)](https://badge.fury.io/py/{{ project_slug }})
+[![Documentation Status](https://readthedocs.org/projects/{{ project_slug }}/badge/?version=latest)](https://{{ project_slug }}.readthedocs.io/en/latest/?badge=latest)
+[![CircleCI](https://circleci.com/gh/{{ git_username }}/{{ project_slug | replace("_", "-") }}.svg?style=shield)](https://circleci.com/gh/{{ git_username }}/{{ project_slug | replace("_", "-") }})
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/pyfar/gallery/main?labpath=docs/gallery/interactive/pyfar_introduction.ipynb)
 
 
 {%- endif %}
-{{ cookiecutter.project_long_description }}
+{{ project_long_description }}
 
 Getting Started
 ===============
@@ -30,11 +27,11 @@ these information are available from [pyfar.org](https://pyfar.org).
 Installation
 ============
 
-Use pip to install {{ cookiecutter.project_slug }}
+Use pip to install {{ project_slug }}
 
-    pip install {{ cookiecutter.project_slug }}
+    pip install {{ project_slug }}
 
-(Requires Python {{ cookiecutter.minimum_python_version }} or higher)
+(Requires Python {{ minimum_python_version }} or higher)
 
 Audio file reading/writing is supported through [SoundFile](https://python-soundfile.readthedocs.io), which is based on
 [libsndfile](http://www.mega-nerd.com/libsndfile/). On Windows and OS X, it will be installed automatically.
