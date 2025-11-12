@@ -28,6 +28,6 @@ def test_readme(copie, copier_project_defaults):
 
     # test README file content
     content = project.project_dir.joinpath("README.md").read_text()
-    assert '# my_project' in content
-    assert 'my_project_description' in content
+    assert 'https://circleci.com/gh/pyfar/my-project' in content
+
 

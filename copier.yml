@@ -1,7 +1,7 @@
 project_slug:
     type: str
     help: "The slug of the project (used in package names, etc.)"
-    default: "pyfar_project"
+    default: "pyfar_package"
 
 project_long_description:
     type: str
@@ -28,3 +28,5 @@ minimum_python_version:
       - "3.12"
       - "3.13"
       - "3.14"
+
+_subdirectory: "template"
