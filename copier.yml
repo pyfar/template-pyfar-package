@@ -1,0 +1,31 @@
+
+project_long_description:
+    type: str
+    help: "A long description of the project"
+    default: "A Python package for audio signal processing and acoustics."
+
+project_slug:
+    type: str
+    help: "The slug of the project (used in package names, etc.)"
+    default: "pyfar_project"
+
+git_username:
+    type: str
+    help: "The GitHub username or organization name"
+    default: "pyfar"
+
+logo_path_gallery:
+    type: str
+    help: "What is the path to the logo image for the pyfar gallery?"
+    default: "resources/logos/pyfar_logos_fixed_size_{{ project_slug }}.png"
+
+minimum_python_version:
+    type: str
+    help: "The minimum Python version required"
+    choices:
+      - "3.9"
+      - "3.10"
+      - "3.11"
+      - "3.12"
+      - "3.13"
+      - "3.14"
