@@ -1,13 +1,12 @@
+project_slug:
+    type: str
+    help: "The slug of the project (used in package names, etc.)"
+    default: "pyfar_project"
 
 project_long_description:
     type: str
     help: "A long description of the project"
     default: "A Python package for audio signal processing and acoustics."
-
-project_slug:
-    type: str
-    help: "The slug of the project (used in package names, etc.)"
-    default: "pyfar_project"
 
 git_username:
     type: str
