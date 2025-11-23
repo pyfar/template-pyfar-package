@@ -13,21 +13,25 @@ def test_project_folder(copie, copier_project_defaults):
     "README.md",
 ])
 def test_generated_file_exists(copie, copier_project_defaults, file_name):
-    # create project
+    # Create a project
     project_defaults = copier_project_defaults
     project = copie.copy(extra_answers=project_defaults)
 
-    # test generated file
+    # Test generated files
     assert project.project_dir.joinpath(file_name).exists()
 
 
 def test_readme(copie, copier_project_defaults):
-    # create project
+    # Create a project
     project_defaults = copier_project_defaults
     project = copie.copy(extra_answers=project_defaults)
 
-    # test README file content
+    # Test README.md file content
     content = project.project_dir.joinpath("README.md").read_text()
-    assert 'https://circleci.com/gh/pyfar/my-project' in content
+    string = "pip install " + project_defaults['project_slug']
+    long_description = project_defaults['project_long_description']
 
+    assert 'https://circleci.com/gh/pyfar/my-project' in content
+    assert string in content
+    assert long_description in content
 
