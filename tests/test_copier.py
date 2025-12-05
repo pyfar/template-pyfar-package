@@ -26,6 +26,8 @@ def test_generated_file_exists(copie, copier_project_defaults, file_name):
     "main/docs/resources/logos/pyfar_logos_fixed_size_my_project.png",
     "Python 3.11 or higher",
     "py/my_project.svg",
+    "https://my_project.readthedocs.io/en/stable/contributing.html",
+    "\nThis is how to get started with my_project.\n",
 ])
 def test_content_readme(copie, copier_project_defaults, desired):
     project = copie.copy(extra_answers=copier_project_defaults)
