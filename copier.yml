@@ -7,6 +7,10 @@ project_long_description:
     help: "A long description of the project"
     default: ""
 
+project_getting_started:
+    type: str
+    help: "A short description of how to get started with the project"
+
 git_username:
     type: str
     help: "The GitHub username or organization name"
