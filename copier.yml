@@ -4,7 +4,7 @@ project_slug:
 
 project_long_description:
     type: str
-    help: "A long description of the project"
+    help: "A long description of the project. It will be added to the README.md of this project"
     default: ""
 
 project_getting_started:
