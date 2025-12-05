@@ -1,5 +1,6 @@
 import pytest
 
+
 def test_project_folder(copie, copier_project_defaults):
     project_defaults = copier_project_defaults
     project = copie.copy(extra_answers=project_defaults)
@@ -13,25 +14,22 @@ def test_project_folder(copie, copier_project_defaults):
     "README.md",
 ])
 def test_generated_file_exists(copie, copier_project_defaults, file_name):
-    # Create a project
-    project_defaults = copier_project_defaults
-    project = copie.copy(extra_answers=project_defaults)
+    project = copie.copy(extra_answers=copier_project_defaults)
 
-    # Test generated files
     assert project.project_dir.joinpath(file_name).exists()
 
 
-def test_readme(copie, copier_project_defaults):
-    # Create a project
-    project_defaults = copier_project_defaults
-    project = copie.copy(extra_answers=project_defaults)
+@pytest.mark.parametrize("desired", [
+    "\nmy_project_description\n",
+    "pip install my_project",
+    "https://circleci.com/gh/pyfar/my-project",
+    'main/docs/resources/logos/pyfar_logos_fixed_size_my_project.png"',
+    "Python 3.11 or higher",
+    "py/my_project.svg",
+])
+def test_content_readme(copie, copier_project_defaults, desired):
+    project = copie.copy(extra_answers=copier_project_defaults)
 
-    # Test README.md file content
     content = project.project_dir.joinpath("README.md").read_text()
-    string = "pip install " + project_defaults['project_slug']
-    long_description = project_defaults['project_long_description']
-
-    assert 'https://circleci.com/gh/pyfar/my-project' in content
-    assert string in content
-    assert long_description in content
+    assert desired in content
 
