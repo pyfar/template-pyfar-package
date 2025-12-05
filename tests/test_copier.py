@@ -23,7 +23,7 @@ def test_generated_file_exists(copie, copier_project_defaults, file_name):
     "\nmy_project_description\n",
     "pip install my_project",
     "https://circleci.com/gh/pyfar/my-project",
-    'main/docs/resources/logos/pyfar_logos_fixed_size_my_project.png"',
+    "main/docs/resources/logos/pyfar_logos_fixed_size_my_project.png",
     "Python 3.11 or higher",
     "py/my_project.svg",
 ])
