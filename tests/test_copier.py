@@ -27,7 +27,7 @@ def test_generated_file_exists(copie, copier_project_defaults, file_name):
     "Python 3.11 or higher",
     "py/my_project.svg",
     "https://my_project.readthedocs.io/en/stable/contributing.html",
-    "\nThis is how to get started with my_project.\n",
+    "\nThis is how to get started.\n",
 ])
 def test_content_readme(copie, copier_project_defaults, desired):
     project = copie.copy(extra_answers=copier_project_defaults)
