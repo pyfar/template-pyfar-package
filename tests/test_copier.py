@@ -35,12 +35,14 @@ def test_content_readme(copie, copier_project_defaults, desired):
     content = project.project_dir.joinpath("README.md").read_text()
     assert desired in content
 
+
 def test_license_default(copie, copier_project_defaults):
     string = f"Copyright (c) {datetime.now().year}"
     project = copie.copy(extra_answers=copier_project_defaults)
     content = project.project_dir.joinpath("LICENSE").read_text()
     assert 'pyfar contributors' in content
     assert string in content
+
 
 @pytest.mark.parametrize(("license_default", "desired"), [
     ("MIT", "The MIT License (MIT)"),
@@ -55,3 +57,9 @@ def test_content_license(copie, copier_project_defaults,
                                          "license": license_default})
     content = project.project_dir.joinpath("LICENSE").read_text()
     assert desired in content
+
+
+def test_license_choice_other(copie, copier_project_defaults):
+    project = copie.copy(extra_answers={**copier_project_defaults,
+                                         "license": ""})
+    assert not project.project_dir.joinpath("LICENSE").exists()

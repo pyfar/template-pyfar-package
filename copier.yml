@@ -36,10 +36,11 @@ _subdirectory: "template"
 
 license:
     type: str
-    help: "Which license do you want to use? Includes a LICENSE file in the repository root.
-     For more information, see:
-     - https://opensource.org/licenses
-     - https://www.pyopensci.org/python-package-guide/documentation/repository-files/license-files.html"
+    help: |
+        Which license do you want to use? Includes a LICENSE file in the repository root.
+        For more information, see:
+        - https://opensource.org/licenses
+        - https://www.pyopensci.org/python-package-guide/documentation/repository-files/license-files.html
     choices:
         "Permissive - MIT": "MIT"
         "Permissive - BSD-3-Clause": "BSD-3-Clause"
