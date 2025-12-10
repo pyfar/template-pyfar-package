@@ -1,5 +1,4 @@
 import pytest
-from datetime import datetime
 
 def test_project_folder(copie, copier_project_defaults):
     project_defaults = copier_project_defaults
