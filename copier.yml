@@ -1,3 +1,8 @@
+author:
+    type: str
+    help: "Your name or the name of your organization"
+    default: "The pyfar developers"
+
 project_slug:
     type: str
     help: "The slug of the project (used in package names, etc.)"
@@ -54,4 +59,4 @@ license:
 copyright_statement:
     type: str
     help: "What is the copyright statement? For example publication year, copyright holder."
-    default: "{{ '%Y' | strftime }}, The pyfar developers"
+    default: "{{ '%Y' | strftime }}, {{ author }}"

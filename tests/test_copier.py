@@ -11,7 +11,8 @@ def test_project_folder(copie, copier_project_defaults):
 
 
 @pytest.mark.parametrize("file_name", [
-    "README.md", "LICENSE",
+    "README.md",
+    "LICENSE",
 ])
 def test_generated_file_exists(copie, copier_project_defaults, file_name):
     project = copie.copy(extra_answers=copier_project_defaults)
