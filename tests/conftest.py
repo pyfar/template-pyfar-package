@@ -9,5 +9,5 @@ def copier_project_defaults():
         "git_username": "pyfar",
         "minimum_python_version": "3.11",
         "license": "MIT",
-        "copyright_holder": "pyfar contributors",
+        "copyright_statement": "2025, The pyfar developers",
         }

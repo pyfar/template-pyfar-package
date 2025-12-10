@@ -51,12 +51,7 @@ license:
         "Other": ""
     default: MIT
 
-copyright_holder:
+copyright_statement:
     type: str
-    help: "Who is the copyright holder, for example, yourself or your organization? Used in copyright statements."
-    default: "{{ git_username }}"
-
-year:
-    type: str
-    help: "What is the starting year of the project? Used in copyright statements."
-    default: "{{ '%Y' | strftime }}"
+    help: "What is the copyright statement? For example publication year, copyright holder."
+    default: "{{ '%Y' | strftime }}, The pyfar developers"

@@ -37,11 +37,9 @@ def test_content_readme(copie, copier_project_defaults, desired):
 
 
 def test_license_default(copie, copier_project_defaults):
-    string = f"Copyright (c) {datetime.now().year}"
     project = copie.copy(extra_answers=copier_project_defaults)
     content = project.project_dir.joinpath("LICENSE").read_text()
-    assert 'pyfar contributors' in content
-    assert string in content
+    assert 'Copyright (c) 2025, The pyfar developers' in content
 
 
 @pytest.mark.parametrize(("license_default", "desired"), [
