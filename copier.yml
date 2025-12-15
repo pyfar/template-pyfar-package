@@ -1,6 +1,6 @@
 author:
     type: str
-    help: "Your name or the name of your organization"
+    help: "The author or authors of the package, can also be an organization."
     default: "The pyfar developers"
 
 project_slug:
