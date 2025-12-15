@@ -1,6 +1,5 @@
 import pytest
 
-
 def test_project_folder(copie, copier_project_defaults):
     project_defaults = copier_project_defaults
     project = copie.copy(extra_answers=project_defaults)
@@ -12,6 +11,7 @@ def test_project_folder(copie, copier_project_defaults):
 
 @pytest.mark.parametrize("file_name", [
     "README.md",
+    "LICENSE",
     "CONTRIBUTING.rst",
 ])
 def test_generated_file_exists(copie, copier_project_defaults, file_name):
@@ -37,6 +37,31 @@ def test_content_readme(copie, copier_project_defaults, desired):
     assert desired in content
 
 
+def test_license_default(copie, copier_project_defaults):
+    project = copie.copy(extra_answers=copier_project_defaults)
+    content = project.project_dir.joinpath("LICENSE").read_text()
+    assert 'Copyright (c) 2025, The pyfar developers' in content
+
+
+@pytest.mark.parametrize(("license_default", "desired"), [
+    ("MIT", "The MIT License (MIT)"),
+    ("BSD-3-Clause", "Redistribution and use in source and binary forms"),
+    ("Apache-2.0", "Apache License"),
+    ("GPL-3.0-only", "GNU GENERAL PUBLIC LICENSE"),
+    ("EUPL-1.2", "EUROPEAN UNION PUBLIC LICENCE v. 1.2"),
+    ("MPL-2.0", "Mozilla Public License Version 2.0")])
+def test_content_license(copie, copier_project_defaults,
+                                 license_default, desired):
+    project = copie.copy(extra_answers={**copier_project_defaults,
+                                         "license": license_default})
+    content = project.project_dir.joinpath("LICENSE").read_text()
+    assert desired in content
+
+
+def test_license_choice_other(copie, copier_project_defaults):
+    project = copie.copy(extra_answers={**copier_project_defaults,
+                                         "license": ""})
+    assert not project.project_dir.joinpath("LICENSE").exists()
 @pytest.mark.parametrize("desired", [
     "https://github.com/pyfar/my_project/issues",
     "$ cd my_project",
