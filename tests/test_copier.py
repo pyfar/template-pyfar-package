@@ -12,6 +12,7 @@ def test_project_folder(copie, copier_project_defaults):
 @pytest.mark.parametrize("file_name", [
     "README.md",
     "LICENSE",
+    "CONTRIBUTING.rst",
 ])
 def test_generated_file_exists(copie, copier_project_defaults, file_name):
     project = copie.copy(extra_answers=copier_project_defaults)
@@ -61,3 +62,12 @@ def test_license_choice_other(copie, copier_project_defaults):
     project = copie.copy(extra_answers={**copier_project_defaults,
                                          "license": ""})
     assert not project.project_dir.joinpath("LICENSE").exists()
+@pytest.mark.parametrize("desired", [
+    "https://github.com/pyfar/my_project/issues",
+    "$ cd my_project",
+])
+def test_content_contributing(copie, copier_project_defaults, desired):
+    project = copie.copy(extra_answers=copier_project_defaults)
+
+    content = project.project_dir.joinpath("CONTRIBUTING.rst").read_text()
+    assert desired in content
