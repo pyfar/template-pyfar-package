@@ -12,6 +12,10 @@ project_long_description:
     help: "A long description of the project. It will be added to the README.md of this project"
     default: ""
 
+project_short_description:
+    type: str
+    help: "A short description of the project. Used in the documentation"
+
 project_getting_started:
     type: str
     help: "A short description of how to get started with the project"
@@ -25,6 +29,20 @@ logo_path_gallery:
     type: str
     help: "What is the path to the logo image for the pyfar gallery?"
     default: "resources/logos/pyfar_logos_fixed_size_{{ project_slug }}.png"
+
+version:
+    type: str
+    help: "What is the version of the project."
+    default: 0.1.0
+    validator: >-
+            {% if not (version | regex_search('^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$')) %}
+            Package version should use Semantic Versioning 2.0.0 (MAJOR.MINOR.PATCH)
+            {% endif %}
+
+keywords: 
+    type: str
+    help: "Keywords to help categorize the project (e.g., on PyPI)."
+    default: "'acoustics','pyfar'"
 
 minimum_python_version:
     type: str
@@ -60,3 +78,36 @@ copyright_statement:
     type: str
     help: "What is the copyright statement? For example publication year, copyright holder."
     default: "{{ '%Y' | strftime }}, {{ author }}"
+
+
+dependencies:
+    type: str
+    help: |
+        Enter the dependencies of this project, separate them with commas and do not leave any
+        spaces between them. These dependencies will be included in the pyproject.toml file.
+    default: "numpy,scipy"
+
+valid_python_versions:
+  when: false
+  type: yaml
+  default: >
+    {% set versions = ["3.9", "3.10", "3.11", "3.12", "3.13", "3.14"] %}
+    {% set min_index = versions.index(minimum_python_version) %}
+    {{ versions[min_index:] }}
+
+pypi_license_classifiers_list:
+  when: false
+  type: yaml
+  default:
+    MIT: "License :: OSI Approved :: MIT License"
+    BSD-3-Clause: "License :: OSI Approved :: BSD License"
+    Apache-2.0: "License :: OSI Approved :: Apache Software License"
+    GPL-3.0-only: "License :: OSI Approved :: GNU General Public License v3 (GPLv3)"
+    EUPL-1.2: "License :: OSI Approved :: European Union Public Licence 1.2 (EUPL 1.2)"
+    MPL-2.0: "License :: OSI Approved :: Mozilla Public License 2.0 (MPL 2.0)"
+
+pypi_license_classifier:
+  when: false
+  type: str
+  default: >
+    {{ pypi_license_classifiers_list[license] }}
