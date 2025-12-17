@@ -10,6 +10,7 @@ def copier_project_defaults():
         "minimum_python_version": "3.11",
         "license": "MIT",
         "copyright_statement": "2025, The pyfar developers",
+        "project_short_description": "my_project_short_description",
         }
 
 @pytest.fixture(scope="session")

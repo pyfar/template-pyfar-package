@@ -10,6 +10,7 @@ def test_project_folder(default_project):
     "README.md",
     "LICENSE",
     "CONTRIBUTING.rst",
+    "pyproject.toml",
 ])
 def test_generated_file_exists(default_project, file_name):
     assert default_project.project_dir.joinpath(file_name).exists()
@@ -64,3 +65,38 @@ def test_content_contributing(default_project, desired):
     content = default_project.project_dir.joinpath(
                                     "CONTRIBUTING.rst").read_text()
     assert desired in content
+
+
+def test_content_pyproject(copie, copier_project_defaults):
+    project = copie.copy(extra_answers=copier_project_defaults)
+
+    content = project.project_dir.joinpath("pyproject.toml").read_text()
+
+    for desired in (
+    'name = "my_project"',
+    'version = "0.1.0"',
+    'description = "my_project_short_description"',
+    'requires-python = ">=3.11"',
+    "'acoustics',",
+    "'pyfar'",
+    '"numpy",',
+    '"scipy",',
+    '"License :: OSI Approved :: MIT License"',
+    'Programming Language :: Python :: 3.11',
+    'Programming Language :: Python :: 3.12',
+    'Programming Language :: Python :: 3.13',
+    'Programming Language :: Python :: 3.14',
+    'Tracker = "https://github.com/pyfar/my_project/issues"',
+    ):
+        assert desired in content, f"{desired!r} is not in content"
+
+def test_incorrect_content_pyproject(copie, copier_project_defaults):
+    project = copie.copy(extra_answers=copier_project_defaults)
+
+    content = project.project_dir.joinpath("pyproject.toml").read_text()
+
+    for not_desired in (
+    'Programming Language :: Python :: 3.9',
+    'Programming Language :: Python :: 3.10',
+    ):
+        assert not_desired not in content, f"{not_desired!r} is  in content"
