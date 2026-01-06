@@ -1,12 +1,15 @@
 import pytest
 
-def test_project_folder(copie, copier_project_defaults):
-    project_defaults = copier_project_defaults
-    project = copie.copy(extra_answers=project_defaults)
+@pytest.fixture(scope="session")
+def default_project(copie_session, copier_project_defaults):
+    project = copie_session.copy(
+        extra_answers=copier_project_defaults)
+    return project
 
-    assert project.exit_code == 0
-    assert project.exception is None
-    assert project.project_dir.is_dir()
+def test_project_folder(default_project):
+    assert default_project.exit_code == 0
+    assert default_project.exception is None
+    assert default_project.project_dir.is_dir()
 
 
 @pytest.mark.parametrize("file_name", [
@@ -14,10 +17,8 @@ def test_project_folder(copie, copier_project_defaults):
     "LICENSE",
     "CONTRIBUTING.rst",
 ])
-def test_generated_file_exists(copie, copier_project_defaults, file_name):
-    project = copie.copy(extra_answers=copier_project_defaults)
-
-    assert project.project_dir.joinpath(file_name).exists()
+def test_generated_file_exists(default_project, file_name):
+    assert default_project.project_dir.joinpath(file_name).exists()
 
 
 @pytest.mark.parametrize("desired", [
@@ -30,16 +31,13 @@ def test_generated_file_exists(copie, copier_project_defaults, file_name):
     "https://my_project.readthedocs.io/en/stable/contributing.html",
     "\nThis is how to get started.\n",
 ])
-def test_content_readme(copie, copier_project_defaults, desired):
-    project = copie.copy(extra_answers=copier_project_defaults)
-
-    content = project.project_dir.joinpath("README.md").read_text()
+def test_content_readme(default_project, desired):
+    content = default_project.project_dir.joinpath("README.md").read_text()
     assert desired in content
 
 
-def test_license_default(copie, copier_project_defaults):
-    project = copie.copy(extra_answers=copier_project_defaults)
-    content = project.project_dir.joinpath("LICENSE").read_text()
+def test_license_default(default_project):
+    content = default_project.project_dir.joinpath("LICENSE").read_text()
     assert 'Copyright (c) 2025, The pyfar developers' in content
 
 
@@ -62,12 +60,13 @@ def test_license_choice_other(copie, copier_project_defaults):
     project = copie.copy(extra_answers={**copier_project_defaults,
                                          "license": ""})
     assert not project.project_dir.joinpath("LICENSE").exists()
+
+
 @pytest.mark.parametrize("desired", [
     "https://github.com/pyfar/my_project/issues",
     "$ cd my_project",
 ])
-def test_content_contributing(copie, copier_project_defaults, desired):
-    project = copie.copy(extra_answers=copier_project_defaults)
-
-    content = project.project_dir.joinpath("CONTRIBUTING.rst").read_text()
+def test_content_contributing(default_project, desired):
+    content = default_project.project_dir.joinpath(
+                                    "CONTRIBUTING.rst").read_text()
     assert desired in content
