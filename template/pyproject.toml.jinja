@@ -10,7 +10,9 @@ authors = [
     { name = "The pyfar developers", email = "info@pyfar.org" }
 ]
 keywords = [
-    {{ keywords|replace(',', ',\n')|indent(4) }}
+    {%- for key in keywords.split(',') %}
+    "{{ key.strip() }}",
+    {%- endfor %}
 ]
 
 classifiers = [
@@ -19,7 +21,7 @@ classifiers = [
     "{{ pypi_license_classifier }}",
     "Natural Language :: English",
     "Programming Language :: Python :: 3",
-    {%- for version in  valid_python_versions %}
+    {%- for version in valid_python_versions %}
     "Programming Language :: Python :: {{ version }}",
     {%- endfor %}
 ]

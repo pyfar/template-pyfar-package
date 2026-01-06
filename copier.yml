@@ -14,7 +14,7 @@ project_long_description:
 
 project_short_description:
     type: str
-    help: "A short description of the project. Used in the documentation"
+    help: "A short description of the project. Used in the documentation and in the package metadata."
 
 project_getting_started:
     type: str
@@ -46,7 +46,7 @@ version:
 keywords: 
     type: str
     help: "Keywords to help categorize the project (e.g., on PyPI)."
-    default: "'acoustics','pyfar'"
+    default: "acoustics,pyfar"
 
 minimum_python_version:
     type: str
