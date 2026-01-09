@@ -1,11 +1,5 @@
 import pytest
 
-@pytest.fixture(scope="session")
-def default_project(copie_session, copier_project_defaults):
-    project = copie_session.copy(
-        extra_answers=copier_project_defaults)
-    return project
-
 def test_project_folder(default_project):
     assert default_project.exit_code == 0
     assert default_project.exception is None

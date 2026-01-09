@@ -11,3 +11,9 @@ def copier_project_defaults():
         "license": "MIT",
         "copyright_statement": "2025, The pyfar developers",
         }
+
+@pytest.fixture(scope="session")
+def default_project(copie_session, copier_project_defaults):
+    project = copie_session.copy(
+        extra_answers=copier_project_defaults)
+    return project
