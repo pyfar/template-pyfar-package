@@ -67,12 +67,7 @@ def test_content_contributing(default_project, desired):
     assert desired in content
 
 
-def test_content_pyproject(copie, copier_project_defaults):
-    project = copie.copy(extra_answers=copier_project_defaults)
-
-    content = project.project_dir.joinpath("pyproject.toml").read_text()
-
-    for desired in (
+@pytest.mark.parametrize("desired", [
     'name = "my_project"',
     'version = "0.1.0"',
     'description = "my_project_short_description"',
@@ -87,16 +82,18 @@ def test_content_pyproject(copie, copier_project_defaults):
     'Programming Language :: Python :: 3.13',
     'Programming Language :: Python :: 3.14',
     'Tracker = "https://github.com/pyfar/my_project/issues"',
-    ):
-        assert desired in content, f"{desired!r} is not in content"
+])
+def test_content_pyproject(default_project, desired):
+    content = default_project.project_dir.joinpath(
+                                        "pyproject.toml").read_text()
+    assert desired in content, f"{desired!r} is not in content"
 
-def test_incorrect_content_pyproject(copie, copier_project_defaults):
-    project = copie.copy(extra_answers=copier_project_defaults)
 
-    content = project.project_dir.joinpath("pyproject.toml").read_text()
-
-    for not_desired in (
+@pytest.mark.parametrize("not_desired", [
     'Programming Language :: Python :: 3.9',
     'Programming Language :: Python :: 3.10',
-    ):
-        assert not_desired not in content, f"{not_desired!r} is  in content"
+])
+def test_incorrect_content_pyproject(default_project, not_desired):
+    content = default_project.project_dir.joinpath(
+                                        "pyproject.toml").read_text()
+    assert not_desired not in content, f"{not_desired!r} is in content"
