@@ -16,6 +16,15 @@ def test_generated_file_exists(default_project, file_name):
     assert default_project.project_dir.joinpath(file_name).exists()
 
 
+@pytest.mark.parametrize("file_name", [
+    "__init__.py",
+    "my_project.py",
+])
+def test_generated_file_in_project_slug_exists(default_project, file_name):
+    assert default_project.project_dir.joinpath('my_project').joinpath(
+                                                        file_name).exists()
+
+
 @pytest.mark.parametrize("desired", [
     "\nmy_project_description\n",
     "pip install my_project",
@@ -97,3 +106,14 @@ def test_incorrect_content_pyproject(default_project, not_desired):
     content = default_project.project_dir.joinpath(
                                         "pyproject.toml").read_text()
     assert not_desired not in content, f"{not_desired!r} is in content"
+
+
+@pytest.mark.parametrize("desired", [
+    'Top-level package for my_project.',
+    '__author__ = """The pyfar developers"""',
+    "__version__ = '0.1.0'",
+])
+def test_content_project_slug_init(default_project, desired):
+    content = default_project.project_dir.joinpath('my_project').joinpath(
+                                        "__init__.py").read_text()
+    assert desired in content, f"{desired!r} is not in content"
