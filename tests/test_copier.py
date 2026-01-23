@@ -105,5 +105,5 @@ def test_incorrect_content_pyproject(default_project, not_desired):
 def test_content_history(default_project):
     content = default_project.project_dir.joinpath(
                                     "HISTORY.rst").read_text()
-    desired = f"0.1.0 ({date.today().strftime("%Y-%m-%d")})"
+    desired = f"0.1.0 ({date.today().strftime('%Y-%m-%d')})"
     assert desired in content
