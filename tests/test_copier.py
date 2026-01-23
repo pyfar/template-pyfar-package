@@ -118,5 +118,5 @@ def test_content_project_slug_init(default_project, desired):
 def test_content_history(default_project):
     content = default_project.project_dir.joinpath(
                                     "HISTORY.rst").read_text()
-    desired = f"0.1.0 ({date.today().strftime("%Y-%m-%d")})"
+    desired = f"0.1.0 ({date.today().strftime('%Y-%m-%d')})"
     assert desired in content
