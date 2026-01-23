@@ -1,4 +1,5 @@
 import pytest
+from datetime import date
 
 def test_project_folder(default_project):
     assert default_project.exit_code == 0
@@ -13,6 +14,8 @@ def test_project_folder(default_project):
     "pyproject.toml",
     "my_project/__init__.py",
     "my_project/my_project.py",
+    "HISTORY.rst",
+    ".github/workflows/check_modified_history.yml",
 ])
 def test_generated_file_exists(default_project, file_name):
     assert default_project.project_dir.joinpath(file_name).exists()
@@ -110,3 +113,10 @@ def test_content_project_slug_init(default_project, desired):
     content = default_project.project_dir.joinpath('my_project').joinpath(
                                         "__init__.py").read_text()
     assert desired in content, f"{desired!r} is not in content"
+
+
+def test_content_history(default_project):
+    content = default_project.project_dir.joinpath(
+                                    "HISTORY.rst").read_text()
+    desired = f"0.1.0 ({date.today().strftime("%Y-%m-%d")})"
+    assert desired in content
