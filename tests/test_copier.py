@@ -13,6 +13,10 @@ def test_project_folder(default_project):
     "pyproject.toml",
     "my_project/__init__.py",
     "my_project/my_project.py",
+    ".github/ISSUE_TEMPLATE/01-bug-report.yml",
+    ".github/ISSUE_TEMPLATE/02-question.yml",
+    ".github/ISSUE_TEMPLATE/03-feature-request.yml",
+    ".github/ISSUE_TEMPLATE/04-documentation.yml",
 ])
 def test_generated_file_exists(default_project, file_name):
     assert default_project.project_dir.joinpath(file_name).exists()
@@ -109,4 +113,25 @@ def test_incorrect_content_pyproject(default_project, not_desired):
 def test_content_project_slug_init(default_project, desired):
     content = default_project.project_dir.joinpath('my_project').joinpath(
                                         "__init__.py").read_text()
+    assert desired in content, f"{desired!r} is not in content"
+
+
+def test_content_github_02_question(default_project):
+    content = default_project.project_dir.joinpath(
+                            ".github/ISSUE_TEMPLATE/02-question.yml").read_text()
+    desired = '(https://my_project.readthedocs.io).'
+    assert desired in content, f"{desired!r} is not in content"
+
+
+def test_content_github_03_feature_request(default_project):
+    content = default_project.project_dir.joinpath(
+                            ".github/ISSUE_TEMPLATE/03-feature-request.yml").read_text()
+    desired = 'https://github.com/pyfar/my_project/issues'
+    assert desired in content, f"{desired!r} is not in content"
+
+
+def test_content_github_04_documentation(default_project):
+    content = default_project.project_dir.joinpath(
+                            ".github/ISSUE_TEMPLATE/04-documentation.yml").read_text()
+    desired = 'https://my_project.readthedocs.io/en/develop/.'
     assert desired in content, f"{desired!r} is not in content"
