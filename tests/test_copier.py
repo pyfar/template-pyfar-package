@@ -13,6 +13,16 @@ def test_project_folder(default_project):
     "pyproject.toml",
     "my_project/__init__.py",
     "my_project/my_project.py",
+    "docs/modules/my_project.rst",
+    "docs/my_project.rst",
+    "docs/api_reference.rst",
+    "docs/conf.py",
+    "docs/contributing.rst",
+    "docs/history.rst",
+    "docs/index.rst",
+    "docs/make.bat",
+    "docs/Makefile",
+    "docs/readme.rst",
 ])
 def test_generated_file_exists(default_project, file_name):
     assert default_project.project_dir.joinpath(file_name).exists()
@@ -109,4 +119,31 @@ def test_incorrect_content_pyproject(default_project, not_desired):
 def test_content_project_slug_init(default_project, desired):
     content = default_project.project_dir.joinpath('my_project').joinpath(
                                         "__init__.py").read_text()
+    assert desired in content, f"{desired!r} is not in content"
+
+
+@pytest.mark.parametrize("desired", [
+    "project = 'my_project'",
+    'copyright = "2025, The pyfar developers"',
+    'author = "The pyfar developers"',
+    "'numpy': ('https://numpy.org/doc/stable/', None)",
+    '\n     "index": "my_project.html"',
+
+])
+def test_content_docs_conf(default_project, desired):
+    content = default_project.project_dir.joinpath('docs/conf.py').read_text()
+    assert desired in content, f"{desired!r} is not in content"
+
+
+@pytest.mark.parametrize("file_name", [
+    'docs/modules/my_project.rst',
+    'docs/my_project.rst',
+    'docs/api_reference.rst',
+    'docs/index.rst',
+    'docs/make.bat',
+    'docs/Makefile',
+])
+def test_content_docs_multiple_files(default_project, file_name):
+    content = default_project.project_dir.joinpath(file_name).read_text()
+    desired = "my_project"
     assert desired in content, f"{desired!r} is not in content"
