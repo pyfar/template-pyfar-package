@@ -21,13 +21,12 @@ This template is used to keep all pyfar packages consistent and provide a good s
     pip install copier
     ```
 
-2.  Run the following copier command to create a target directory at path_to_target_folder.
-    Note: Copier will overwrite files in the given directory if it already exists.
+2. Run the following copier command to create a target directory at path_to_target_folder.
+   Note: Copier will overwrite files in the given directory if it already exists.
 
-    ```console
-    copier copy https://github.com/pyfar/template-pyfar-package path_to_target_folder
-    ```
-   
+   ```console
+   copier copy https://github.com/pyfar/template-pyfar-package path_to_target_folder
+   ```
 
 (Requires Python 3.10 or higher)
 
