@@ -116,16 +116,13 @@ def test_content_project_slug_init(default_project, desired):
     assert desired in content, f"{desired!r} is not in content"
 
 
-def test_content_github_02_question(default_project):
-    content = default_project.project_dir.joinpath(
-                            ".github/ISSUE_TEMPLATE/02-question.yml").read_text()
-    desired = '(https://my_project.readthedocs.io).'
-    assert desired in content, f"{desired!r} is not in content"
-
-
-def test_content_github_03_feature_request(default_project):
-    content = default_project.project_dir.joinpath(
-                            ".github/ISSUE_TEMPLATE/03-feature-request.yml").read_text()
+@pytest.mark.parametrize("file_name", [
+    ".github/ISSUE_TEMPLATE/01-bug-report.yml",
+    ".github/ISSUE_TEMPLATE/02-question.yml",
+    ".github/ISSUE_TEMPLATE/03-feature-request.yml",
+])
+def test_content_github_issue_template(default_project, file_name):
+    content = default_project.project_dir.joinpath(file_name).read_text()
     desired = 'https://github.com/pyfar/my_project/issues'
     assert desired in content, f"{desired!r} is not in content"
 
