@@ -48,16 +48,18 @@ keywords:
     help: "Keywords to help categorize the project (e.g., on PyPI)."
     default: "acoustics,pyfar"
 
+python_versions:
+  when: false
+  type: yaml
+  default: ['3.9', '3.10', '3.11', '3.12', '3.13', '3.14']
+
 minimum_python_version:
-    type: str
+    type: yaml
     help: "The minimum Python version required"
-    choices:
-      - "3.9"
-      - "3.10"
-      - "3.11"
-      - "3.12"
-      - "3.13"
-      - "3.14"
+    choices: >
+        {% for v in python_versions %}
+            - "'{{ v }}'"
+        {% endfor %}
 
 _subdirectory: "template"
 
@@ -95,9 +97,8 @@ valid_python_versions:
   when: false
   type: yaml
   default: >
-    {% set versions = ["3.9", "3.10", "3.11", "3.12", "3.13", "3.14"] %}
-    {% set min_index = versions.index(minimum_python_version) %}
-    {{ versions[min_index:] }}
+    {% set min_index = python_versions.index(minimum_python_version) %}
+    {{ python_versions[min_index:] }}
 
 pypi_license_classifiers_list:
   when: false

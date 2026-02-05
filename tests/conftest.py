@@ -7,7 +7,7 @@ def copier_project_defaults():
         "project_long_description": "my_project_description",
         "project_getting_started": "This is how to get started.",
         "git_username": "pyfar",
-        "minimum_python_version": "3.11",
+        "minimum_python_version": "'3.11'",
         "license": "MIT",
         "copyright_statement": "2025, The pyfar developers",
         "project_short_description": "my_project_short_description",
