@@ -13,6 +13,7 @@ def test_project_folder(default_project):
     "pyproject.toml",
     "my_project/__init__.py",
     "my_project/my_project.py",
+    ".copier-answers.yml",
 ])
 def test_generated_file_exists(default_project, file_name):
     assert default_project.project_dir.joinpath(file_name).exists()
