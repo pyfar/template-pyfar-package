@@ -28,6 +28,7 @@ def test_project_folder(default_project):
     "docs/readme.rst",
     "MANIFEST.in",
     ".readthedocs.yml",
+    ".copier-answers.yml",
 ])
 def test_generated_file_exists(default_project, file_name):
     assert default_project.project_dir.joinpath(file_name).exists()
