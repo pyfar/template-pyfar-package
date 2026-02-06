@@ -28,6 +28,7 @@ This template is used to keep all pyfar packages consistent and provide a good s
     copier copy https://github.com/pyfar/template-pyfar-package path_to_target_folder
     ```
 
+
 (Requires Python 3.10 or higher)
 
 ## Contributing
