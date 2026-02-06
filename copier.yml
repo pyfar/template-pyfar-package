@@ -51,14 +51,14 @@ keywords:
 python_versions:
   when: false
   type: yaml
-  default: ['3.9', '3.10', '3.11', '3.12', '3.13', '3.14']
+  default: ["3.9", "3.10", "3.11", "3.12", "3.13", "3.14"]
 
 minimum_python_version:
-    type: yaml
+    type: str
     help: "The minimum Python version required"
     choices: >
         {% for v in python_versions %}
-            - "'{{ v }}'"
+            - "{{ v }}"
         {% endfor %}
 
 _subdirectory: "template"
