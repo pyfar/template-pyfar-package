@@ -90,8 +90,9 @@ dependencies:
     type: str
     help: |
         Enter the dependencies of this project, separate them with commas and do not leave any
-        spaces between them. These dependencies will be included in the pyproject.toml file.
-    default: "numpy,scipy"
+        spaces between them. These dependencies will be included in the pyproject.toml 
+        and in the .readthedocs.yml files.
+    default: "numpy,scipy,libsndfile1"
 
 valid_python_versions:
   when: false
@@ -99,6 +100,12 @@ valid_python_versions:
   default: >
     {% set min_index = python_versions.index(minimum_python_version) %}
     {{ python_versions[min_index:] }}
+
+default_python_version:
+  when: false
+  type: yaml
+  default: >
+    {{ python_versions[-1] }}
 
 pypi_license_classifiers_list:
   when: false
