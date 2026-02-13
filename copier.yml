@@ -93,12 +93,26 @@ dependencies:
         spaces between them. These dependencies will be included in the pyproject.toml file.
     default: "numpy,scipy"
 
+apt_packages:
+    type: str
+    help: |
+        Enter the required apt packages for this project, separate them with commas and do not leave any
+        spaces between them. The dependencies are installed before each CI/CD workflow and readthedocs
+        build via apt-get on a Linux system.
+    default: "libsndfile1,"
+
 valid_python_versions:
   when: false
   type: yaml
   default: >
     {% set min_index = python_versions.index(minimum_python_version) %}
     {{ python_versions[min_index:] }}
+
+latest_python_version:
+  when: false
+  type: yaml
+  default: >
+    {{ python_versions[-1] }}
 
 pypi_license_classifiers_list:
   when: false

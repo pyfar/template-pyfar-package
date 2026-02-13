@@ -27,6 +27,7 @@ def test_project_folder(default_project):
     "docs/Makefile",
     "docs/readme.rst",
     "MANIFEST.in",
+    ".readthedocs.yml",
 ])
 def test_generated_file_exists(default_project, file_name):
     assert default_project.project_dir.joinpath(file_name).exists()
@@ -158,3 +159,13 @@ def test_content_docs_multiple_files(default_project, file_name):
     content = default_project.project_dir.joinpath(file_name).read_text()
     desired = "my_project"
     assert desired in content, f"{desired!r} is not in content"
+
+
+@pytest.mark.parametrize("desired", [
+    '- libsndfile1',
+    "python: 3.14",
+])
+def test_content_readthedocs(default_project, desired):
+    content = default_project.project_dir.joinpath(
+                                    ".readthedocs.yml").read_text()
+    assert desired in content
