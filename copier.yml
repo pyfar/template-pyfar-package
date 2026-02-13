@@ -130,3 +130,10 @@ pypi_license_classifier:
   type: str
   default: >
     {{ pypi_license_classifiers_list[license] }}
+
+custom_ignores:
+    type: str
+    help: |
+        Add custom entries to the .gitignore file. Separate them with commas and do not leave any
+        spaces between them. 
+    default: ""
