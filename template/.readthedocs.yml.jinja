@@ -10,10 +10,10 @@ build:
   os: ubuntu-24.04
   tools:
     python: {{ latest_python_version }}
-  {% if 'libsndfile1' in apt_packages -%}
+{% if 'libsndfile1' in apt_packages -%}
   apt_packages:
     - libsndfile1
-  {%- endif %}
+{%- endif %}
 
 # Build documentation in the "docs/" directory with Sphinx
 sphinx:

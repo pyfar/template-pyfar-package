@@ -96,8 +96,9 @@ dependencies:
 apt_packages:
     type: str
     help: |
-        Enter the APT packages of this project, separate them with commas and do not leave any
-        spaces between them.
+        Enter the required apt packages for this project, separate them with commas and do not leave any
+        spaces between them. The dependencies are installed before each CI/CD workflow and readthedocs
+        build via apt-get on a Linux system.
     default: "libsndfile1,"
 
 valid_python_versions:
