@@ -1,6 +1,3 @@
 # Changes here will be overwritten by Copier; NEVER EDIT MANUALLY
-{{ dict(_copier_answers, 
-valid_python_versions=valid_python_versions,
-pypi_license_classifiers_list=pypi_license_classifiers_list,
-pypi_license_classifier=pypi_license_classifier) | to_nice_yaml -}}
+{{ _copier_answers|to_nice_yaml -}}
 
