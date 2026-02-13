@@ -29,6 +29,7 @@ def test_project_folder(default_project):
     "MANIFEST.in",
     ".readthedocs.yml",
     ".copier-answers.yml",
+    ".editorconfig",
 ])
 def test_generated_file_exists(default_project, file_name):
     assert default_project.project_dir.joinpath(file_name).exists()
