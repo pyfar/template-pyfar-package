@@ -26,6 +26,7 @@ def test_project_folder(default_project):
     "docs/make.bat",
     "docs/Makefile",
     "docs/readme.rst",
+    "MANIFEST.in",
 ])
 def test_generated_file_exists(default_project, file_name):
     assert default_project.project_dir.joinpath(file_name).exists()
