@@ -101,6 +101,12 @@ apt_packages:
         build via apt-get on a Linux system.
     default: "libsndfile1,"
 
+use_pypi_deployment_with_ci:
+    type: bool
+    help: |
+        Do you want to add a CircleCi workflow for automated testing and PyPI publishing? 
+    default: true
+
 valid_python_versions:
   when: false
   type: yaml

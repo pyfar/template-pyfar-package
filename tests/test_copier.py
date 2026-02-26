@@ -176,10 +176,10 @@ def test_content_readthedocs(default_project, desired):
 
 @pytest.mark.parametrize("desired", [
     'version:\n                - "3.14"',
-    'version:\n                - "3.9"\n                - "3.10"\n'
-    '                - "3.11"\n                - "3.12"\n'
+    'version:\n                - "3.11"\n                - "3.12"\n'
     '                - "3.13"\n                - "3.14"',
     'command: sudo apt-get update && sudo apt-get install -y libsndfile1',
+    '# Test and publish on new git version tags',
 ])
 def test_content_circleci(default_project, desired):
     content = default_project.project_dir.joinpath(

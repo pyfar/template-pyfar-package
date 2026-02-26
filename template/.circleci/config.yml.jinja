@@ -176,7 +176,7 @@ workflows:
           matrix:
             parameters:
               version:
-                {%- for v in python_versions %}
+                {%- for v in valid_python_versions %}
                 - "{{ v }}"
                 {%- endfor %}
                 
@@ -217,6 +217,7 @@ workflows:
                 - main
                 - develop
 
+{% if use_pypi_deployment_with_ci == true %}
   test_and_publish:
     # Test and publish on new git version tags
     # This requires its own workflow to successfully trigger the test and build
@@ -225,7 +226,7 @@ workflows:
           matrix:
             parameters:
               version:
-                {%- for v in python_versions %}
+                {%- for v in valid_python_versions %}
                 - "{{ v }}"
                 {%- endfor %}
                 
@@ -294,3 +295,4 @@ workflows:
             # only act on version tags
             tags:
               only: /^v[0-9]+(\.[0-9]+)*$/
+{% endif %}
