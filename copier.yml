@@ -107,6 +107,12 @@ ruff_ignore:
         Enter a comma-separated list of files, directories, or file patterns that Ruff should ignore. 
     default: ".git,docs"
 
+gitignore_custom:
+    type: str
+    help: |
+        Enter a comma-separated list of files, directories, or file patterns for the .gitignore file. 
+    default: "your/custom/path/,"
+
 valid_python_versions:
   when: false
   type: yaml
@@ -136,10 +142,3 @@ pypi_license_classifier:
   type: str
   default: >
     {{ pypi_license_classifiers_list[license] }}
-
-custom_ignores:
-    type: str
-    help: |
-        Add custom entries to the .gitignore file. Separate them with commas and do not leave any
-        spaces between them. 
-    default: ""
