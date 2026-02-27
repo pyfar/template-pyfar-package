@@ -30,6 +30,7 @@ def test_project_folder(default_project):
     ".readthedocs.yml",
     ".copier-answers.yml",
     ".editorconfig",
+    ".gitignore",
 ])
 def test_generated_file_exists(default_project, file_name):
     assert default_project.project_dir.joinpath(file_name).exists()
@@ -170,4 +171,13 @@ def test_content_docs_multiple_files(default_project, file_name):
 def test_content_readthedocs(default_project, desired):
     content = default_project.project_dir.joinpath(
                                     ".readthedocs.yml").read_text()
+    assert desired in content
+
+@pytest.mark.parametrize("desired", [
+    'docs/resources/logos/pyfar_logos_fixed_size_my_project.png',
+    'your/custom/path/',
+])
+def test_content_gitignore(default_project, desired):
+    content = default_project.project_dir.joinpath(
+                                    ".gitignore").read_text()
     assert desired in content

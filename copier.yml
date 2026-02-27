@@ -101,6 +101,12 @@ apt_packages:
         build via apt-get on a Linux system.
     default: "libsndfile1,"
 
+gitignore_custom:
+    type: str
+    help: |
+        Enter a comma-separated list of files, directories, or file patterns for the .gitignore file. 
+    default: "your/custom/path/,"
+
 valid_python_versions:
   when: false
   type: yaml
