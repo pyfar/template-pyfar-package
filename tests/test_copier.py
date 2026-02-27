@@ -32,6 +32,7 @@ def test_project_folder(default_project):
     ".editorconfig",
     ".github/workflows/has_label.yml",
     ".github/workflows/has_version_milestone.yml",
+    ".gitignore",
 ])
 def test_generated_file_exists(default_project, file_name):
     assert default_project.project_dir.joinpath(file_name).exists()
