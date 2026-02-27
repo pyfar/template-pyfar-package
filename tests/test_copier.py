@@ -101,6 +101,7 @@ def test_content_contributing(default_project, desired):
     'Programming Language :: Python :: 3.13',
     'Programming Language :: Python :: 3.14',
     'Tracker = "https://github.com/pyfar/my_project/issues"',
+    '"docs",\n    "examples/",',
 ])
 def test_content_pyproject(default_project, desired):
     content = default_project.project_dir.joinpath(
