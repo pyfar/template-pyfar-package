@@ -171,3 +171,12 @@ def test_content_readthedocs(default_project, desired):
     content = default_project.project_dir.joinpath(
                                     ".readthedocs.yml").read_text()
     assert desired in content
+
+@pytest.mark.parametrize("desired", [
+    'docs/resources/logos/pyfar_logos_fixed_size_my_project.png',
+    'your/custom/path/',
+])
+def test_content_gitignore(default_project, desired):
+    content = default_project.project_dir.joinpath(
+                                    ".gitignore").read_text()
+    assert desired in content
