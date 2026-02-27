@@ -122,10 +122,10 @@ docs/_static/header.rst
 docs/_static/css/custom.css
 docs/_static/js/custom.js
 docs/resources/logos/pyfar_logos_fixed_size_pyfar.png
-docs/{{ cookiecutter.logo_path_gallery }}
+docs/{{ logo_path_gallery }}
 
 # custom 
-{%- for key in custom_ignores.split(',') %}
-    "{{ key.strip() }}",
-    {%- endfor %}
-]
+{{ pypi_license_classifier }}
+{%- for key in gitignore_custom.split(',') %}
+{{ key.strip() }}
+{%- endfor %}
