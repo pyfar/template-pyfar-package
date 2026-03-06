@@ -78,6 +78,9 @@ find = {}  # Scan the project directory with the default parameters
 exclude = [
     ".git",
     "docs",
+{%- for key in ruff_ignore.split(',') %}
+    "{{ key.strip() }}",
+{%- endfor %}
 ]
 line-length = 79
 lint.ignore = [
