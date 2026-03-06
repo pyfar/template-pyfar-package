@@ -116,7 +116,7 @@ gitignore_custom:
 use_pypi_deployment_with_ci:
     type: bool
     help: |
-        Do you want to add a CircleCi workflow for automated testing and PyPI publishing? 
+        Would you like to add a CircleCI workflow for continuous deployment to PyPI?
     default: true
 
 valid_python_versions:
