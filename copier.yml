@@ -105,7 +105,7 @@ ruff_ignore:
     type: str
     help: |
         Enter a comma-separated list of files, directories, or file patterns that Ruff should ignore. 
-    default: ""
+    default: ".git,docs"
 
 valid_python_versions:
   when: false
