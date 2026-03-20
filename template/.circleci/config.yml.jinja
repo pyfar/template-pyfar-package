@@ -114,7 +114,7 @@ jobs:
           name: Run tests
           command: pytest tests -W error::DeprecationWarning
 
-  test_pypi_publish:
+  test_package_build:
     parameters:
       version:
         description: "version tag"
@@ -204,7 +204,7 @@ workflows:
           requires:
             - build_and_test
 
-      - test_pypi_publish:
+      - test_package_build:
           matrix:
             parameters:
               version:
