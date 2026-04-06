@@ -177,6 +177,7 @@ def test_content_readthedocs(default_project, desired):
                                     ".readthedocs.yml").read_text()
     assert desired in content
 
+
 @pytest.mark.parametrize("desired", [
     'docs/resources/logos/pyfar_logos_fixed_size_my_project.png',
     'your/custom/path/',
@@ -198,4 +199,14 @@ def test_content_circleci(default_project, desired):
     content = default_project.project_dir.joinpath(
                                     ".circleci/config.yml").read_text()
     print(content)
+    assert desired in content
+
+
+@pytest.mark.parametrize("desired", [
+    'recursive-include your/custom/path/\n'
+    'recursive-exclude another/custom/path/',
+])
+def test_content_MANIFEST(default_project, desired):
+    content = default_project.project_dir.joinpath(
+                                    "MANIFEST.in").read_text()
     assert desired in content
