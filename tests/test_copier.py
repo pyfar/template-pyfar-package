@@ -33,6 +33,7 @@ def test_project_folder(default_project):
     ".github/workflows/has_label.yml",
     ".github/workflows/has_version_milestone.yml",
     ".gitignore",
+    ".circleci/config.yml",
 ])
 def test_generated_file_exists(default_project, file_name):
     assert default_project.project_dir.joinpath(file_name).exists()
@@ -183,4 +184,18 @@ def test_content_readthedocs(default_project, desired):
 def test_content_gitignore(default_project, desired):
     content = default_project.project_dir.joinpath(
                                     ".gitignore").read_text()
+    assert desired in content
+
+
+@pytest.mark.parametrize("desired", [
+    'version:\n                - "3.14"',
+    'version:\n                - "3.11"\n                - "3.12"\n'
+    '                - "3.13"\n                - "3.14"',
+    'command: sudo apt-get update && sudo apt-get install -y libsndfile1',
+    '# Test and publish on new git version tags',
+])
+def test_content_circleci(default_project, desired):
+    content = default_project.project_dir.joinpath(
+                                    ".circleci/config.yml").read_text()
+    print(content)
     assert desired in content
