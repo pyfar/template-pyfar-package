@@ -146,5 +146,11 @@ pypi_license_classifiers_list:
 pypi_license_classifier:
   when: false
   type: str
-  default: >
+  default: >-
     {{ pypi_license_classifiers_list[license] }}
+
+_skip_if_exists:
+    - HISTORY.rst
+    - "{{ project_slug }}/__init__.py"
+    - "{{ project_slug }}/{{ project_slug }}.py"
+    - docs/modules/{{ project_slug }}.rst
