@@ -85,13 +85,6 @@ copyright_statement:
     help: "What is the copyright statement? For example publication year, copyright holder."
     default: "{{ '%Y' | strftime }}, {{ author }}"
 
-file_creation:
-  type: bool
-  help: |
-    Should the files HISTORY.rst, project_slug/__init__.py, project_slug/project_slug.py,
-    and docs/modules/project_slug.rst always be created if they do not exist?
-  default: true
-
 dependencies:
     type: str
     help: |
