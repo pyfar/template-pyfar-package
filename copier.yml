@@ -149,7 +149,7 @@ pypi_license_classifier:
     {{ pypi_license_classifiers_list[license] }}
 
 _exclude:
-    "{% if _copier_operation == 'update' -%}{% endif %}
+    "{% if _copier_operation == 'update' -%}
         - HISTORY.rst
         - {{ project_slug }}/__init__.py
         - {{ project_slug }}/{{ project_slug }}.py
