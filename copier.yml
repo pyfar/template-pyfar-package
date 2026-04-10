@@ -149,11 +149,22 @@ pypi_license_classifier:
   default: >-
     {{ pypi_license_classifiers_list[license] }}
 
+files_to_exclude:
+    type: str
+    help: |
+        Enter a comma-separated list of files, which should never be updated and regenerated
+        during a copier update. 
+    default: "HISTORY.rst,{{ project_slug }}/__init__.py,{{ project_slug }}/{{ project_slug }}.py,docs/modules/{{ project_slug }}.rst,api_reference.rst"
+
 _exclude:
-    "{% if _copier_operation == 'update' -%}
-        - HISTORY.rst
-        - {{ project_slug }}/__init__.py
-        - {{ project_slug }}/{{ project_slug }}.py
-        - docs/modules/{{ project_slug }}.rst
-        - CONTRIBUTING.rst
-    {% endif %}"
+    {% for f in files_to_exclude.split(',') %}
+        - "{{ v }}"
+    {% endfor %}
+
+    # "{% if _copier_operation == 'update' -%}
+    #     - HISTORY.rst
+    #     - {{ project_slug }}/__init__.py
+    #     - {{ project_slug }}/{{ project_slug }}.py
+    #     - docs/{{ project_slug }}.rst
+    #     - api_reference.rst
+    # {% endif %}"
