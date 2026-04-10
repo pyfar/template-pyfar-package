@@ -20,6 +20,20 @@ project_getting_started:
     type: str
     help: "A short description of how to get started with the project"
 
+project_installation_instructions:
+    type: str
+    help: "A short description of how to install the package. It will be added to the README.md of this project"
+
+add_reference_section:
+  type: bool
+  help: "Do you want to add a reference section to the README.md?"
+  default: false
+
+reference_section_description:
+  when: "{{ add_reference_section }}"
+  type: str
+  help: "Enter the references for the reference section."
+
 git_username:
     type: str
     help: "The GitHub username or organization name"
