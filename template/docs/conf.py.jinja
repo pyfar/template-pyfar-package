@@ -93,15 +93,20 @@ highlight_language = "python3"
 
 # intersphinx mapping
 intersphinx_mapping = {
-    {% if 'numpy' in dependencies -%}
+    {%- if 'numpy' in intersphinx_mapping %}
     'numpy': ('https://numpy.org/doc/stable/', None),{% endif %}
-    {% if 'scipy' in dependencies -%}
+    {%- if 'scipy' in intersphinx_mapping %}
     'scipy': ('https://docs.scipy.org/doc/scipy/', None),{% endif %}
-    {% if 'matplotlib' in dependencies -%}
+    {%- if 'matplotlib' in intersphinx_mapping %}
     'matplotlib': ('https://matplotlib.org/stable/', None),{% endif %}
-    {% if 'pyfar' in dependencies -%}
-    'pyfar': ('https://pyfar.readthedocs.io/en/stable/', None),
+    {%- if 'pyfar' in intersphinx_mapping %}
+    'pyfar': ('https://pyfar.readthedocs.io/en/stable/', None),{% endif %}
+    {%- if 'gallery' in intersphinx_mapping %}
     'gallery': ('https://pyfar-gallery.readthedocs.io/en/latest/', None),{% endif %}
+    {%- if 'soundfile' in intersphinx_mapping %}
+    'soundfile': ('https://python-soundfile.readthedocs.io/en/latest/', None),{% endif %}
+    {%- if 'spharpy' in intersphinx_mapping %}
+    'spharpy': ('https://spharpy.readthedocs.io/en/stable/', None),{% endif %}
     }
 
 # -- Options for HTML output -------------------------------------------------

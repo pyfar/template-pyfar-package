@@ -85,6 +85,22 @@ copyright_statement:
     help: "What is the copyright statement? For example publication year, copyright holder."
     default: "{{ '%Y' | strftime }}, {{ author }}"
 
+intersphinx_mapping:
+  type: yaml
+  help: "Select projects which should be cross-referenced in the documentation."
+  choices:
+    - numpy
+    - scipy
+    - matplotlib
+    - pyfar
+    - gallery
+    - spharpy
+    - soundfile
+  multiselect: true
+  default:
+    - numpy
+    - gallery
+
 dependencies:
     type: str
     help: |
