@@ -149,11 +149,8 @@ pypi_license_classifier:
     {{ pypi_license_classifiers_list[license] }}
 
 _exclude:
-    "{% if _copier_operation == 'update' -%}
-        - HISTORY.rst
-        - {{ project_slug }}/__init__.py
-        - {{ project_slug }}/{{ project_slug }}.py
-        - docs/modules/{{ project_slug }}.rst
-        - docs/{{ project_slug }}.rst
-        - api_reference.rst
-    {% endif %}"
+    - "{% if _copier_operation == 'update' -%}HISTORY.rst{% endif %}"
+    - "{% if _copier_operation == 'update' -%}{{ project_slug }}/__init__.py{% endif %}"
+    - "{% if _copier_operation == 'update' -%}{{ project_slug }}/{{ project_slug }}.py{% endif %}"
+    - "{% if _copier_operation == 'update' -%}docs/modules/{{ project_slug }}.rst{% endif %}"
+    - "{% if _copier_operation == 'update' -%}api_reference.rst{% endif %}"
