@@ -157,9 +157,9 @@ files_to_exclude:
     default: "HISTORY.rst,{{ project_slug }}/__init__.py,{{ project_slug }}/{{ project_slug }}.py,docs/modules/{{ project_slug }}.rst,api_reference.rst"
 
 _exclude:
-    {% for f in files_to_exclude.split(',') %}
-        - "{{ v }}"
-    {% endfor %}
+    "{% for f in files_to_exclude.split(',') -%}
+        - {% if _copier_operation == 'update' -%}{{ f.strip() }}{% endif %}
+    {% endfor %}"
 
     # "{% if _copier_operation == 'update' -%}
     #     - HISTORY.rst
