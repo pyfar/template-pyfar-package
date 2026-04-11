@@ -85,7 +85,6 @@ copyright_statement:
     help: "What is the copyright statement? For example publication year, copyright holder."
     default: "{{ '%Y' | strftime }}, {{ author }}"
 
-
 dependencies:
     type: str
     help: |
@@ -146,5 +145,12 @@ pypi_license_classifiers_list:
 pypi_license_classifier:
   when: false
   type: str
-  default: >
+  default: >-
     {{ pypi_license_classifiers_list[license] }}
+
+_exclude:
+    - "{% if _copier_operation == 'update' -%}HISTORY.rst{% endif %}"
+    - "{% if _copier_operation == 'update' -%}{{ project_slug }}/__init__.py{% endif %}"
+    - "{% if _copier_operation == 'update' -%}{{ project_slug }}/{{ project_slug }}.py{% endif %}"
+    - "{% if _copier_operation == 'update' -%}docs/modules/{{ project_slug }}.rst{% endif %}"
+    - "{% if _copier_operation == 'update' -%}api_reference.rst{% endif %}"
