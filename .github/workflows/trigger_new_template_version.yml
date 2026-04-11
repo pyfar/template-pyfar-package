@@ -11,7 +11,7 @@ jobs:
     if: ${{ github.event.created == true && github.event.deleted != true }}
     strategy:
       matrix:
-        repo: ['pyfar/pyfar', 'pyfar/spharpy', 'pyfar/sofar', 'pyfar/pyrato']
+        repo: ['pyfar/pyfar', 'pyfar/spharpy', 'pyfar/sofar', 'pyfar/pyrato', 'pyfar/imkar']
     runs-on: ubuntu-latest
     steps:
       - name: Repository Dispatch
