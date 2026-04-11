@@ -12,6 +12,8 @@ def copier_project_defaults():
         "copyright_statement": "2025, The pyfar developers",
         "project_short_description": "my_project_short_description",
         "python_versions": "['3.9', '3.10', '3.11', '3.12', '3.13', '3.14']",
+        "manifest_custom": "recursive-include your/custom/path/,"
+        "recursive-exclude another/custom/path/'",
         }
 
 @pytest.fixture(scope="session")
