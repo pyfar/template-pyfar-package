@@ -34,6 +34,7 @@ def test_project_folder(default_project):
     ".github/workflows/has_version_milestone.yml",
     ".gitignore",
     ".circleci/config.yml",
+    ".github/workflows/create_pr_on_template_updates.yml",
 ])
 def test_generated_file_exists(default_project, file_name):
     assert default_project.project_dir.joinpath(file_name).exists()
@@ -198,4 +199,14 @@ def test_content_circleci(default_project, desired):
     content = default_project.project_dir.joinpath(
                                     ".circleci/config.yml").read_text()
     print(content)
+    assert desired in content
+
+
+@pytest.mark.parametrize("desired", [
+    '          python-version: 3.14',
+])
+def test_content_github_action_create_pr_on_template_updates(default_project, desired):
+    content = default_project.project_dir.joinpath(
+        ".github/workflows/create_pr_on_template_updates.yml").read_text()
+
     assert desired in content
