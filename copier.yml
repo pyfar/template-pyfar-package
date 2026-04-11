@@ -24,15 +24,20 @@ project_installation_instructions:
     type: str
     help: "A short description of how to install the package. It will be added to the README.md of this project"
 
-add_reference_section:
+add_additional_section:
   type: bool
-  help: "Do you want to add a reference section to the README.md?"
+  help: "Do you want to add an additional section to the README.md?"
   default: false
 
-reference_section_description:
-  when: "{{ add_reference_section }}"
+additional_section_heading:
+  when: "{{ add_additional_section }}"
   type: str
-  help: "Enter the references for the reference section."
+  help: "Enter the heading for the additional section."
+
+additional_section_description:
+  when: "{{ add_additional_section }}"
+  type: str
+  help: "Enter the description for the additional section."
 
 git_username:
     type: str
