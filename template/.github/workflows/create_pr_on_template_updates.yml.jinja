@@ -6,13 +6,16 @@ on:
 
 jobs:
   create-pr-from-copier:
+    permissions:
+      contents: write
+      pull-requests: write
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - name: Set up Python {{ latest_python_version }}
         uses: actions/setup-python@v5
         with:
-          python-version: {{ latest_python_version }}
+          python-version: "{{ latest_python_version }}"
       - name: Install dependencies
         run: |
             python -m pip install --upgrade pip
@@ -35,7 +38,6 @@ jobs:
         with:
             commit-message: apply copier template
             title: "[Bot]: apply copier template version ${{ env.latest_version }}"
-            base: ci/pr-template
             body: |
               - apply latest changes from copier template version ${{ env.latest_version }}
             branch: template/${{ env.latest_version }}
