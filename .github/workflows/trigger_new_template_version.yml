@@ -8,6 +8,7 @@ on:
 
 jobs:
   dispatch:
+    if: ${{ github.event.created == true && github.event.deleted != true }}
     strategy:
       matrix:
         repo: ['pyfar/pyfar', 'pyfar/spharpy', 'pyfar/sofar', 'pyfar/pyrato']
@@ -19,3 +20,4 @@ jobs:
           token: ${{ secrets.PAT }}
           repository: ${{ matrix.repo }}
           event-type: new-template-version
+          client-payload: '{"template_version":"${{ github.ref_name }}","source_repository":"${{ github.repository }}"}'
