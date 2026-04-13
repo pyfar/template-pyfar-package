@@ -9,7 +9,7 @@ version: 2
 build:
   os: ubuntu-24.04
   tools:
-    python: {{ latest_python_version }}
+    python: "{{ latest_python_version }}"
 {% if 'libsndfile1' in apt_packages -%}
   apt_packages:
     - libsndfile1
