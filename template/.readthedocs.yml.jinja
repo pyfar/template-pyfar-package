@@ -15,6 +15,14 @@ build:
     - libsndfile1
 {%- endif %}
 
+{%- if add_submodules == true %}
+
+# {{ submodule_description }}
+submodules:
+  include:
+    - {{ submodule_path }}
+{%- endif %}
+
 # Build documentation in the "docs/" directory with Sphinx
 sphinx:
   configuration: docs/conf.py
