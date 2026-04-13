@@ -50,7 +50,7 @@ def test_generated_file_exists(default_project, file_name):
     "https://my_project.readthedocs.io/en/stable/contributing.html",
     "\nThis is how to get started.\n",
     "\nInstallation instructions.\n",
-    "\n\n## Additional Section\n\nAdditional section description.",
+    "\n\n## Section\n\nSection description.",
 ])
 def test_content_readme(default_project, desired):
     content = default_project.project_dir.joinpath("README.md").read_text()

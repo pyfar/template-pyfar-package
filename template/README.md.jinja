@@ -29,9 +29,4 @@ If the installation fails, please check out the [help section](https://pyfar-gal
 
 Check out the [contributing guidelines](https://{{ project_slug }}.readthedocs.io/en/stable/contributing.html) if you want to become part of pyfar.
 
-{% if add_additional_section == true -%}
-## {{ additional_section_heading }}
-
-{{ additional_section_description }}
-
-{%- endif %}
+{{ additional_section_readme | replace('\\n', '\n') }}
