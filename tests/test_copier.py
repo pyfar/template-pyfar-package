@@ -147,6 +147,8 @@ def test_content_history(default_project):
     'author = "The pyfar developers"',
     "'numpy': ('https://numpy.org/doc/stable/', None)",
     '\n     "index": "my_project.html"',
+    "import module\n"
+    "import anothermodule",
 
 ])
 def test_content_docs_conf(default_project, desired):
