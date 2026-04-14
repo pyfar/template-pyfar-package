@@ -51,6 +51,7 @@ def test_generated_file_exists(default_project, file_name):
     "\nThis is how to get started.\n",
     "\nInstallation instructions.\n",
     "\n\n## Section\n\nSection description.",
+    "https://mybinder.org/v2/gh/pyfar/gallery/main?labpath=docs/gallery/interactive/pyfar_introduction.ipynb",
 ])
 def test_content_readme(default_project, desired):
     content = default_project.project_dir.joinpath("README.md").read_text()

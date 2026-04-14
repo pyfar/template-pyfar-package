@@ -19,6 +19,7 @@ def copier_project_defaults():
         "docs_custom_import": "module, anothermodule",
         "add_submodules": "true",
         "submodule_path": "path/to/submodule",
+        "introduction_path": "pyfar_introduction",
         }
 
 @pytest.fixture(scope="session")
