@@ -140,6 +140,14 @@ manifest_custom:
         Enter a comma-separated list of MANIFEST.in directives to include or exclude files and directories.
         Each entry should follow standard MANIFEST.in syntax.
     default: ""
+
+docs_custom_import:
+    type: str
+    help: |
+        Enter any additional Python modules that should be imported in the docs/conf.py file.
+        Separate multiple modules with commas.
+    default: ""
+
 valid_python_versions:
   when: false
   type: yaml

@@ -14,6 +14,7 @@ def copier_project_defaults():
         "python_versions": "['3.9', '3.10', '3.11', '3.12', '3.13', '3.14']",
         "manifest_custom": "recursive-include your/custom/path/,"
         "recursive-exclude another/custom/path/'",
+        "docs_custom_import": "module, anothermodule",
         }
 
 @pytest.fixture(scope="session")
