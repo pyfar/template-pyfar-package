@@ -6,7 +6,7 @@
 [![Documentation Status](https://readthedocs.org/projects/{{ project_slug }}/badge/?version=latest)](https://{{ project_slug }}.readthedocs.io/en/latest/?badge=latest)
 [![CircleCI](https://circleci.com/gh/{{ git_username }}/{{ project_slug | replace("_", "-") }}.svg?style=shield)](https://circleci.com/gh/{{ git_username }}/{{ project_slug | replace("_", "-") }})
 {%- if introduction_path != "" %}
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/pyfar/gallery/main?labpath=docs/gallery/interactive/{{ introduction_path }}.ipynb)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/pyfar/gallery/main?labpath={{ introduction_path }})
 {%- endif %}
 
 {{ project_long_description }}

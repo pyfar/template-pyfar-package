@@ -174,12 +174,12 @@ submodule_path:
 
 
 introduction_path:
-    type: str
+    type: yaml
     help: |
         If you have an introduction notebook in Jupyter, you can specify the path to it here. 
         It will be included in the README.md. 
         Please leave it empty if you do not want to include an introduction notebook.
-    default: ""
+    default: docs/gallery/interactive/{{ project_slug }}_introduction.ipynb
 
 valid_python_versions:
   when: false
