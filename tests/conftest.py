@@ -19,7 +19,7 @@ def copier_project_defaults():
         "docs_custom_import": "module, anothermodule",
         "add_submodules": "true",
         "submodule_path": "path/to/submodule",
-        "introduction_path": "pyfar_introduction",
+        "introduction_path": "docs/gallery/interactive/pyfar_introduction.ipynb",
         }
 
 @pytest.fixture(scope="session")
