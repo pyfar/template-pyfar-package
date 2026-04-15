@@ -17,7 +17,7 @@ build:
 
 {%- if add_submodules == true %}
 
-# {{ submodule_description }}
+# make sure to include submodule at {{ submodule_path }}
 submodules:
   include:
     - {{ submodule_path }}

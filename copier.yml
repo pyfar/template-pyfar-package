@@ -148,17 +148,10 @@ docs_custom_import:
         Separate multiple modules with commas.
     default: ""
 
-
 add_submodules:
     type: bool
     help: "Would you like to add submodules to this project?"
     default: false
-
-submodule_description:
-    when: "{{ add_submodules }}"
-    type: str
-    help: "Enter the short description for the submodule. This will be added as a comment in the .readthedocs.yml file."
-    default: ""
 
 submodule_path:
     when: "{{ add_submodules }}"

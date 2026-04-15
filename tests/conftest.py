@@ -16,7 +16,6 @@ def copier_project_defaults():
         "recursive-exclude another/custom/path/'",
         "docs_custom_import": "module, anothermodule",
         "add_submodules": "true",
-        "submodule_description": "include this submodule",
         "submodule_path": "path/to/submodule",
         }
 
