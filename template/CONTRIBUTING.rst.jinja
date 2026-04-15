@@ -45,9 +45,12 @@ extensions in `Visual Studio Code <https://code.visualstudio.com/>`_ ...
     $ git clone https://github.com/YOUR_USERNAME/{{ project_slug }}.git
     $ cd {{ project_slug }}
 
+   {%- if add_submodules == true %}
+   
    Note that some graphical Git interfaces can not do the recursive clone. If the folder {{ submodule_path }} is empty try::
 
     $ git submodule update --init
+    {%- endif %}
 
 3. Install your local copy into a virtualenv. Assuming you have Anaconda or Miniconda installed, this is how you set up your fork for local development::
 
