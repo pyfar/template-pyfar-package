@@ -9,7 +9,7 @@ if "%SPHINXBUILD%" == "" (
 )
 set SOURCEDIR=.
 set BUILDDIR=_build
-set SPHINXPROJ=template_pyfar_package
+set SPHINXPROJ=template-pyfar-package
 
 if "%1" == "" goto help
 

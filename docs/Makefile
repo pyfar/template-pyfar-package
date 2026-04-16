@@ -4,7 +4,7 @@
 # You can set these variables from the command line.
 SPHINXOPTS    =
 SPHINXBUILD   = python -msphinx
-SPHINXPROJ    = template_pyfar_package
+SPHINXPROJ    = template-pyfar-package
 SOURCEDIR     = .
 BUILDDIR      = _build
 
