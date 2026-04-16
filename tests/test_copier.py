@@ -175,8 +175,9 @@ def test_content_docs_multiple_files(default_project, file_name):
 
 
 @pytest.mark.parametrize("desired", [
-    '- libsndfile1',
-    'python: "3.14"',
+    '  apt_packages:\n'
+    '    - libsndfile1',
+    '    python: "3.14"',
     "  include:\n    - path/to/submodule",
 ])
 def test_content_readthedocs(default_project, desired):

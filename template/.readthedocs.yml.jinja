@@ -10,10 +10,10 @@ build:
   os: ubuntu-24.04
   tools:
     python: "{{ latest_python_version }}"
-  {% if 'libsndfile1' in apt_packages -%}
   apt_packages:
-    - libsndfile1
-  {%- endif %}
+    {%- for package in apt_packages.split(',') %}
+    - {{ package.strip() }}
+    {%- endfor %}
 
 {%- if add_submodules == true %}
 
