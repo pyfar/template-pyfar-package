@@ -198,8 +198,6 @@ def test_content_gitignore(default_project, desired):
     '                - "3.13"\n                - "3.14"',
     'command: sudo apt-get update && sudo apt-get install -y libsndfile1',
     '# Test and publish on new git version tags',
-    'git submodule sync --recursive\n            '
-    'git submodule update --recursive --init',
     'name: synchronize submodules',
 ])
 def test_content_circleci(default_project, desired):

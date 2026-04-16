@@ -178,13 +178,14 @@ jobs:
       - run:
           name: install dependencies
           command: pip install ".[deploy]"
+      {%- if add_submodules == true %}
+      - run:
+          name: synchronize submodules
+          command: git submodule sync --recursive && git submodule update --recursive --init
+      {%- endif %}
       - run:
           name: deploy
           command: |  # create whl, install twine and publish to Test PyPI
-            {%- if add_submodules == true %}
-            git submodule sync --recursive
-            git submodule update --recursive --init
-            {%- endif %}
             python -m build
             twine check dist/*
             twine upload dist/*
