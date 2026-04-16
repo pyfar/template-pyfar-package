@@ -47,7 +47,7 @@ jobs:
       {%- if add_submodules == true %}
       - run:
           name: synchronize submodules
-          command: git submodule update --init --recursive && git submodule update --recursive --init
+          command: git submodule sync --recursive && git submodule update --recursive --init
       {%- endif %}
       - run:
           name: Run tests
@@ -70,7 +70,7 @@ jobs:
       {%- if add_submodules == true %}
       - run:
           name: synchronize submodules
-          command: git submodule update --init --recursive && git submodule update --recursive --init
+          command: git submodule sync --recursive && git submodule update --recursive --init
       {%- endif %}
       - run:
           name: Ruff
@@ -92,13 +92,14 @@ jobs:
           name: Install System Dependencies
           command: sudo apt-get update && sudo apt-get install -y libsndfile1
       {%- endif %}
+      {%- if add_submodules == true %}
+      - run:
+          name: synchronize submodules
+          command: git submodule sync --recursive && git submodule update --recursive --init
+      {%- endif %}
       - run:
           name: Sphinx
           command: |
-            {%- if add_submodules == true %}
-            git submodule sync --recursive
-            git submodule update --recursive --init
-            {%- endif %}
             pip install ".[docs]"
             cd docs/
             make html SPHINXOPTS="-W"
@@ -127,7 +128,7 @@ jobs:
       {%- if add_submodules == true %}
       - run:
           name: synchronize submodules
-          command: git submodule update --init --recursive && git submodule update --recursive --init
+          command: git submodule sync --recursive && git submodule update --recursive --init
       {%- endif %}
       - run:
           name: Run tests
