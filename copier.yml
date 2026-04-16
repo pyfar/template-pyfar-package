@@ -23,6 +23,7 @@ project_getting_started:
 project_installation_instructions:
     type: str
     help: "A short description of how to install the package. It will be added to the README.md of this project"
+    default: ""
 
 additional_section_readme:
   type: str
