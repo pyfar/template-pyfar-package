@@ -175,14 +175,24 @@ def test_content_docs_multiple_files(default_project, file_name):
 
 
 @pytest.mark.parametrize("desired", [
-    '- libsndfile1',
-    "python: 3.14",
+    '  apt_packages:\n'
+    '    - libsndfile1',
+    '    python: "3.14"',
     "  include:\n    - path/to/submodule",
 ])
 def test_content_readthedocs(default_project, desired):
     content = default_project.project_dir.joinpath(
                                     ".readthedocs.yml").read_text()
     assert desired in content
+
+
+def test_apt_packages_empty(copie, copier_project_defaults):
+    project = copie.copy(extra_answers={**copier_project_defaults,
+                                         "apt_packages": ""})
+    content = project.project_dir.joinpath(
+                                    ".readthedocs.yml").read_text()
+    not_desired = '  apt_packages:\n    -'
+    assert not_desired not in content
 
 
 @pytest.mark.parametrize("desired", [
