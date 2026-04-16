@@ -161,6 +161,17 @@ docs_custom_import:
         Separate multiple modules with commas.
     default: ""
 
+add_submodules:
+    type: bool
+    help: "Would you like to add submodules to this project?"
+    default: false
+
+submodule_path:
+    when: "{{ add_submodules }}"
+    type: str
+    help: "Enter the path for the submodule."
+    default: ""
+
 valid_python_versions:
   when: false
   type: yaml

@@ -44,6 +44,11 @@ jobs:
       - run:
           name: install dependencies
           command: pip install ".[tests]"
+      {%- if add_submodules == true %}
+      - run:
+          name: synchronize submodules
+          command: git submodule sync --recursive && git submodule update --recursive --init
+      {%- endif %}
       - run:
           name: Run tests
           command: pytest tests
@@ -62,6 +67,11 @@ jobs:
       - run:
           name: install dependencies
           command: pip install ".[tests]"
+      {%- if add_submodules == true %}
+      - run:
+          name: synchronize submodules
+          command: git submodule sync --recursive && git submodule update --recursive --init
+      {%- endif %}
       - run:
           name: Ruff
           command: ruff check
@@ -81,6 +91,11 @@ jobs:
       - run:
           name: Install System Dependencies
           command: sudo apt-get update && sudo apt-get install -y libsndfile1
+      {%- endif %}
+      {%- if add_submodules == true %}
+      - run:
+          name: synchronize submodules
+          command: git submodule sync --recursive && git submodule update --recursive --init
       {%- endif %}
       - run:
           name: Sphinx
@@ -110,6 +125,11 @@ jobs:
           command: pip install ".[tests]"
       - run: |
           python --version
+      {%- if add_submodules == true %}
+      - run:
+          name: synchronize submodules
+          command: git submodule sync --recursive && git submodule update --recursive --init
+      {%- endif %}
       - run:
           name: Run tests
           command: pytest tests -W error::DeprecationWarning
@@ -158,6 +178,11 @@ jobs:
       - run:
           name: install dependencies
           command: pip install ".[deploy]"
+      {%- if add_submodules == true %}
+      - run:
+          name: synchronize submodules
+          command: git submodule sync --recursive && git submodule update --recursive --init
+      {%- endif %}
       - run:
           name: deploy
           command: |  # create whl, install twine and publish to Test PyPI

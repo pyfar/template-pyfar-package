@@ -17,6 +17,8 @@ def copier_project_defaults():
         "manifest_custom": "recursive-include your/custom/path/,"
         "recursive-exclude another/custom/path/'",
         "docs_custom_import": "module, anothermodule",
+        "add_submodules": "true",
+        "submodule_path": "path/to/submodule",
         }
 
 @pytest.fixture(scope="session")

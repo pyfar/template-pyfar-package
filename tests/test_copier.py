@@ -86,6 +86,7 @@ def test_license_choice_other(copie, copier_project_defaults):
 @pytest.mark.parametrize("desired", [
     "https://github.com/pyfar/my_project/issues",
     "$ cd my_project",
+    "$ git submodule update --init --recursive",
 ])
 def test_content_contributing(default_project, desired):
     content = default_project.project_dir.joinpath(
@@ -176,6 +177,7 @@ def test_content_docs_multiple_files(default_project, file_name):
 @pytest.mark.parametrize("desired", [
     '- libsndfile1',
     "python: 3.14",
+    "  include:\n    - path/to/submodule",
 ])
 def test_content_readthedocs(default_project, desired):
     content = default_project.project_dir.joinpath(
@@ -199,6 +201,7 @@ def test_content_gitignore(default_project, desired):
     '                - "3.13"\n                - "3.14"',
     'command: sudo apt-get update && sudo apt-get install -y libsndfile1',
     '# Test and publish on new git version tags',
+    'name: synchronize submodules',
 ])
 def test_content_circleci(default_project, desired):
     content = default_project.project_dir.joinpath(
