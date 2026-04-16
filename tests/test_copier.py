@@ -186,6 +186,15 @@ def test_content_readthedocs(default_project, desired):
     assert desired in content
 
 
+def test_apt_packages_empty(copie, copier_project_defaults):
+    project = copie.copy(extra_answers={**copier_project_defaults,
+                                         "apt_packages": ""})
+    content = project.project_dir.joinpath(
+                                    ".readthedocs.yml").read_text()
+    not_desired = '  apt_packages:\n    -'
+    assert not_desired not in content
+
+
 @pytest.mark.parametrize("desired", [
     'docs/resources/logos/pyfar_logos_fixed_size_my_project.png',
     'your/custom/path/',
