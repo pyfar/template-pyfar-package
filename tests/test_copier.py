@@ -44,10 +44,10 @@ def test_generated_file_exists(default_project, file_name):
     "\nmy_project_description\n",
     "pip install my_project",
     "https://circleci.com/gh/pyfar/my-project",
-    "main/docs/resources/logos/pyfar_logos_fixed_size_my_project.png",
+    "main/docs/resources/logos/pyfar_logos_fixed_size_my-project.png",
     "Python 3.11 or higher",
-    "py/my_project.svg",
-    "https://my_project.readthedocs.io/en/stable/contributing.html",
+    "py/my-project.svg",
+    "https://my-project.readthedocs.io/en/stable/contributing.html",
     "\nThis is how to get started.\n",
     "\nInstallation instructions.\n",
     "\n\n## Section\n\nSection description.",
@@ -84,8 +84,8 @@ def test_license_choice_other(copie, copier_project_defaults):
 
 
 @pytest.mark.parametrize("desired", [
-    "https://github.com/pyfar/my_project/issues",
-    "$ cd my_project",
+    "https://github.com/pyfar/my-project/issues",
+    "$ cd my-project",
     "$ git submodule update --init --recursive",
 ])
 def test_content_contributing(default_project, desired):
@@ -108,7 +108,7 @@ def test_content_contributing(default_project, desired):
     'Programming Language :: Python :: 3.12',
     'Programming Language :: Python :: 3.13',
     'Programming Language :: Python :: 3.14',
-    'Tracker = "https://github.com/pyfar/my_project/issues"',
+    'Tracker = "https://github.com/pyfar/my-project/issues"',
     '".git",\n    "docs",',
 ])
 def test_content_pyproject(default_project, desired):
@@ -128,7 +128,7 @@ def test_incorrect_content_pyproject(default_project, not_desired):
 
 
 @pytest.mark.parametrize("desired", [
-    'Top-level package for my_project.',
+    'Top-level package for my-project.',
     '__author__ = """The pyfar developers"""',
     "__version__ = '0.1.0'",
 ])
@@ -146,11 +146,11 @@ def test_content_history(default_project):
 
 
 @pytest.mark.parametrize("desired", [
-    "project = 'my_project'",
+    "project = 'my-project'",
     'copyright = "2025, The pyfar developers"',
     'author = "The pyfar developers"',
     "'numpy': ('https://numpy.org/doc/stable/', None)",
-    '\n     "index": "my_project.html"',
+    '\n     "index": "my-project.html"',
     "import module\n"
     "import anothermodule",
 
@@ -170,7 +170,7 @@ def test_content_docs_conf(default_project, desired):
 ])
 def test_content_docs_multiple_files(default_project, file_name):
     content = default_project.project_dir.joinpath(file_name).read_text()
-    desired = "my_project"
+    desired = "my-project"
     assert desired in content, f"{desired!r} is not in content"
 
 
@@ -196,7 +196,7 @@ def test_apt_packages_empty(copie, copier_project_defaults):
 
 
 @pytest.mark.parametrize("desired", [
-    'docs/resources/logos/pyfar_logos_fixed_size_my_project.png',
+    'docs/resources/logos/pyfar_logos_fixed_size_my-project.png',
     'your/custom/path/',
 ])
 def test_content_gitignore(default_project, desired):

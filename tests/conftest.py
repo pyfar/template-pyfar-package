@@ -3,7 +3,7 @@ import pytest
 @pytest.fixture(scope='session')
 def copier_project_defaults():
     return {
-        "project_slug": "my_project",
+        "project_slug": "my-project",
         "project_long_description": "my_project_description",
         "project_getting_started": "This is how to get started.",
         "project_installation_instructions": "Installation instructions.",
