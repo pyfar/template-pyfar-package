@@ -15,9 +15,9 @@
 
 ## Installation
 
-Use pip to install {{ project_slug }}
+Use pip to install {{ project_slug | replace('_', '-') }}
 
-    pip install {{ project_slug }}
+    pip install {{ project_slug | replace('_', '-') }}
 
 (Requires Python {{ minimum_python_version }} or higher)
 
