@@ -41,7 +41,7 @@ git_username:
 logo_path_gallery:
     type: str
     help: "What is the path to the logo image for the pyfar gallery?"
-    default: "resources/logos/pyfar_logos_fixed_size_{{ project_slug }}.png"
+    default: "resources/logos/pyfar_logos_fixed_size_{{ project_slug | replace('-', '_') }}.png"
 
 version:
     type: str

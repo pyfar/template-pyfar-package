@@ -44,7 +44,7 @@ def test_generated_file_exists(default_project, file_name):
     "\nmy_project_description\n",
     "pip install my_project",
     "https://circleci.com/gh/pyfar/my-project",
-    "main/docs/resources/logos/pyfar_logos_fixed_size_my-project.png",
+    "main/docs/resources/logos/pyfar_logos_fixed_size_my_project.png",
     "Python 3.11 or higher",
     "py/my-project.svg",
     "https://my-project.readthedocs.io/en/stable/contributing.html",
@@ -196,7 +196,7 @@ def test_apt_packages_empty(copie, copier_project_defaults):
 
 
 @pytest.mark.parametrize("desired", [
-    'docs/resources/logos/pyfar_logos_fixed_size_my-project.png',
+    'docs/resources/logos/pyfar_logos_fixed_size_my_project.png',
     'your/custom/path/',
 ])
 def test_content_gitignore(default_project, desired):
