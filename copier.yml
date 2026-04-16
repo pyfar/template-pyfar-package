@@ -20,6 +20,19 @@ project_getting_started:
     type: str
     help: "A short description of how to get started with the project"
 
+project_installation_instructions:
+    type: str
+    help: "A short description of how to install the package. It will be added to the README.md of this project"
+    default: ""
+
+additional_section_readme:
+  type: str
+  help: |
+        If necessary, add an extra section for the README.md file. It will be appended at the end, 
+        so it is recommended to start with a heading (e.g., ## References\n\nThis section...). 
+        Use \n for a new line.
+  default: ""
+
 git_username:
     type: str
     help: "The GitHub username or organization name"
