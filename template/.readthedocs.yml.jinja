@@ -10,10 +10,12 @@ build:
   os: ubuntu-24.04
   tools:
     python: "{{ latest_python_version }}"
+  {%- if apt_packages != "" %}
   apt_packages:
     {%- for package in apt_packages.split(',') %}
     - {{ package.strip() }}
     {%- endfor %}
+  {%- endif %}
 
 {%- if add_submodules == true %}
 
