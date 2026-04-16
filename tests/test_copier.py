@@ -34,6 +34,7 @@ def test_project_folder(default_project):
     ".github/workflows/has_version_milestone.yml",
     ".gitignore",
     ".circleci/config.yml",
+    ".github/workflows/add_to_project.yml",
 ])
 def test_generated_file_exists(default_project, file_name):
     assert default_project.project_dir.joinpath(file_name).exists()
