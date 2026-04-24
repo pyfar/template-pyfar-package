@@ -213,8 +213,7 @@ jobs:
           command: pip install ".[deploy]"
       - run:
           name: deploy
-          command: |  # create whl, install twine and publish to Test PyPI
-            python -m build
+          command: |
             twine check /tmp/workspace/dist/*
 
   run_pypi_publish:
@@ -245,8 +244,7 @@ jobs:
       {%- endif %}
       - run:
           name: deploy
-          command: |  # create whl, install twine and publish to Test PyPI
-            python -m build
+          command: |
             twine check /tmp/workspace/dist/*
             twine upload /tmp/workspace/dist/*
 
