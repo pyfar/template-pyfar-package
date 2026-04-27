@@ -1,29 +1,33 @@
 [project]
-name = "template_pyfar_package"
+name = "template-pyfar-package"
 version = "0.1.0"
 description = "Template to generate and update pyfar packages."
 readme = "README.md"
 license = {file = "LICENSE"}
-requires-python = ">=3.10"
+requires-python = ">=3.11"
+
 authors = [
-    { name = "The pyfar developers", email = "info@pyfar.org" },
+    { name = "The pyfar developers", email = "info@pyfar.org" }
 ]
 keywords = [
-    'acoustics',
-    'pyfar'
+    "acoustics",
+    "pyfar",
+    "copier",
+    "template",
 ]
+
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Science/Research",
     "License :: OSI Approved :: MIT License",
     "Natural Language :: English",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
-    
+    "Programming Language :: Python :: 3.14",
 ]
+
 dependencies = [
     "copier",
     "numpy",
@@ -39,12 +43,10 @@ deploy = [
     ]
 tests = [
     "pytest",
-    "pytest-copie",
     "pytest-cov",
     "watchdog",
     "ruff==0.8.3",
     "coverage",
-    
 ]
 docs = [
     "sphinx",
@@ -54,16 +56,17 @@ docs = [
     "sphinx-design",
     "sphinx-favicon",
     "sphinx-reredirects",
+    "sphinx-copybutton",
 ]
-dev = ["template_pyfar_package[deploy,tests,docs]"]
+dev = ["template-pyfar-package[deploy,tests,docs]"]
 
 [project.urls]
-Tracker = "https://github.com/pyfar/template_pyfar_package/issues"
-Documentation = "https://template_pyfar_package.readthedocs.io/"
-Download = "https://pypi.org/project/template_pyfar_package/"
+Tracker = "https://github.com/pyfar/template-pyfar-package/issues"
+Documentation = "https://template-pyfar-package.readthedocs.io/"
+Download = "https://pypi.org/project/template-pyfar-package/"
 Homepage = "https://pyfar.org/"
-Source = "https://github.com/pyfar/template_pyfar_package"
-Changelog = "https://github.com/pyfar/template_pyfar_package/blob/main/HISTORY.rst"
+Source = "https://github.com/pyfar/template-pyfar-package"
+Changelog = "https://github.com/pyfar/template-pyfar-package/blob/main/HISTORY.rst"
 
 [build-system]
 requires = ["setuptools>=61.0", "wheel"]
@@ -89,6 +92,7 @@ lint.ignore = [
     "B008",   # Do not perform calls in argument defaults
     "PT018",  # Assertion should be broken down into multiple parts
     "PT019",  # Fixture `_` without value is injected as parameter
+
 ]
 lint.select = [
     "B",      # bugbear extension
@@ -150,6 +154,6 @@ search = '\nversion = "{current_version}"'
 replace = '\nversion = "{new_version}"'
 
 [[tool.bumpversion.files]]
-filename = "template_pyfar_package/__init__.py"
+filename = "template-pyfar-package/__init__.py"
 search = "__version__ = '{current_version}'"
 replace = "__version__ = '{new_version}'"
