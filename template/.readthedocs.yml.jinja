@@ -13,7 +13,9 @@ build:
   {%- if apt_packages != "" %}
   apt_packages:
     {%- for package in apt_packages.split(',') %}
+    {%- if package.strip() != "" %}
     - {{ package.strip() }}
+    {%- endif %}
     {%- endfor %}
   {%- endif %}
 
