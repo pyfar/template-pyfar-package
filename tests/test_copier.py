@@ -86,7 +86,8 @@ def test_license_choice_other(copie, copier_project_defaults):
 
 @pytest.mark.parametrize("desired", [
     "https://github.com/pyfar/my_project/issues",
-    "$ cd my_project",
+    "    $ git clone --recursive https://github.com/YOUR_USERNAME/my_project.git\n"
+    "    $ cd my_project",
     "$ git submodule update --init --recursive",
 ])
 def test_content_contributing(default_project, desired):
