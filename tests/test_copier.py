@@ -35,6 +35,7 @@ def test_project_folder(default_project):
     ".gitignore",
     ".circleci/config.yml",
     ".github/workflows/add_to_project.yml",
+    ".github/PULL_REQUEST_TEMPLATE.md",
 ])
 def test_generated_file_exists(default_project, file_name):
     assert default_project.project_dir.joinpath(file_name).exists()
