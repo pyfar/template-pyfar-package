@@ -3,10 +3,10 @@
 API Reference
 =============
 
-The following gives detailed information about all template_pyfar_package functions sorted
+The following gives detailed information about all template-pyfar-package functions sorted
 according to their modules.
 
-For examples on how to use template_pyfar_package refer to the notebooks in the
+For examples on how to use template-pyfar-package refer to the notebooks in the
 `examples gallery`_ and the documentation on classes and modules below.
 
 
@@ -16,7 +16,7 @@ Modules
 .. toctree::
    :maxdepth: 1
 
-   modules/template_pyfar_package
+   modules/template-pyfar-package
 
 
 .. _examples gallery: https://pyfar-gallery.readthedocs.io/en/latest/examples_gallery.html

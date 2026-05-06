@@ -1,4 +1,4 @@
-template_pyfar_package
+template-pyfar-package 
 ======================
 
 .. include:: header.rst
