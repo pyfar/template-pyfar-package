@@ -37,8 +37,8 @@ jobs:
         uses: peter-evans/create-pull-request@v8
         with:
             commit-message: apply copier template
-            title: "[Bot]: apply copier template version ${{ env.latest_version }}"
+            title: "[Bot]: apply copier template version ${{ '{{env.latest_version}}' }}"
             body: |
-              - apply latest changes from copier template version ${{ env.latest_version }}
-            branch: template/${{ env.latest_version }}
+              - apply latest changes from copier template version ${{ '{{env.latest_version}}' }}
+            branch: template/${{ '{{env.latest_version}}' }}
             draft: true
