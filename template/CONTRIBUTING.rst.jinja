@@ -41,18 +41,14 @@ extensions in `Visual Studio Code <https://code.visualstudio.com/>`_ ...
 1. `Fork <https://docs.github.com/en/get-started/quickstart/fork-a-repo/>`_ the `{{ project_slug }}` repo on GitHub.
 2. Clone your fork locally and cd into the {{ project_slug }} directory::
 
+    $ git clone{%- if add_submodules == true %} --recursive {%- endif %} https://github.com/YOUR_USERNAME/{{ project_slug }}.git
+    $ cd {{ project_slug }}
+
    {%- if add_submodules == true %}
 
-    $ git clone --recursive https://github.com/YOUR_USERNAME/{{ project_slug }}.git
-    $ cd {{ project_slug }}
-   
    Note that some graphical Git interfaces can not do the recursive clone. If the folder {{ submodule_path }} is empty try::
 
     $ git submodule update --init
-   {%- else %}
-
-    $ git clone https://github.com/YOUR_USERNAME/{{ project_slug }}.git
-    $ cd {{ project_slug }}
    {%- endif %}
 
 3. Install your local copy into a virtualenv. Assuming you have Anaconda or Miniconda installed, this is how you set up your fork for local development::
