@@ -36,13 +36,13 @@ jobs:
       version: <<parameters.version>>
     steps:
       - checkout
-      
+            
       - run:
           name: install dependencies
           command: pip install ".[tests]"
       - run:
           name: Run tests
-          command: pytest
+          command: pytest tests
 
   ruff:
     parameters:
@@ -102,7 +102,7 @@ jobs:
           name: Run tests
           command: pytest tests -W error::DeprecationWarning
 
-  test_pypi_publish:
+  test_package_build:
     parameters:
       version:
         description: "version tag"
@@ -145,6 +145,7 @@ jobs:
             twine check dist/*
             twine upload dist/*
 
+
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
@@ -155,16 +156,16 @@ workflows:
           matrix:
             parameters:
               version:
-                - "3.10"
                 - "3.11"
                 - "3.12"
                 - "3.13"
+                - "3.14"
                 
       - ruff:
           matrix:
             parameters:
               version:
-                - "3.13"
+                - "3.14"
           requires:
             - build_and_test
 
@@ -172,7 +173,7 @@ workflows:
           matrix:
             parameters:
               version:
-                - "3.13"
+                - "3.14"
           requires:
             - build_and_test
 
@@ -180,76 +181,21 @@ workflows:
           matrix:
             parameters:
               version:
-                - "3.13"
+                - "3.14"
           requires:
             - build_and_test
 
-      - test_pypi_publish:
+      - test_package_build:
           matrix:
             parameters:
               version:
-                - "3.13"
-          requires:
-            - build_and_test
-
-  test_and_publish:
-    # Test and publish on new git version tags
-    # This requires its own workflow to successfully trigger the test and build
-    jobs:
-      - build_and_test:
-          matrix:
-            parameters:
-              version:
-                - "3.10"
-                - "3.11"
-                - "3.12"
-                - "3.13"
-                
-          filters:
-            branches:
-              ignore: /.*/
-            # only act on version tags
-            tags:
-              only: /^v[0-9]+(\.[0-9]+)*$/
-
-      - ruff:
-          matrix:
-            parameters:
-              version:
-                - "3.13"
+                - "3.14"
           requires:
             - build_and_test
           filters:
             branches:
-              ignore: /.*/
-            # only act on version tags
-            tags:
-              only: /^v[0-9]+(\.[0-9]+)*$/
+              only:
+                - main
+                - develop
 
-      - test_documentation_build:
-          matrix:
-            parameters:
-              version:
-                - "3.13"
-          requires:
-            - build_and_test
-          filters:
-            branches:
-              ignore: /.*/
-            # only act on version tags
-            tags:
-              only: /^v[0-9]+(\.[0-9]+)*$/
 
-      - test_deprecation_warnings:
-          matrix:
-            parameters:
-              version:
-                - "3.13"
-          requires:
-            - build_and_test
-          filters:
-            branches:
-              ignore: /.*/
-            # only act on version tags
-            tags:
-              only: /^v[0-9]+(\.[0-9]+)*$/

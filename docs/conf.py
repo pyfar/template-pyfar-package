@@ -10,9 +10,10 @@ import os
 import sys
 import urllib3
 import shutil
+import numpy as np
 sys.path.insert(0, os.path.abspath('..'))
 
-import template_pyfar_package  # noqa
+import template-pyfar-package  # noqa
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
@@ -22,6 +23,7 @@ extensions = [
     'sphinx.ext.viewcode',
     'sphinx.ext.napoleon',
     'sphinx.ext.autosummary',
+    'matplotlib.sphinxext.plot_directive',
     'sphinx.ext.mathjax',
     'sphinx.ext.intersphinx',
     'autodocsumm',
@@ -29,6 +31,7 @@ extensions = [
     'sphinx_favicon',
     'sphinx_reredirects',
     'sphinx_mdinclude',
+    'sphinx_copybutton',
 ]
 
 # show tocs for classes and functions of modules using the autodocsumm
@@ -56,16 +59,15 @@ master_doc = 'index'
 project = 'template-pyfar-package'
 copyright = "2025, The pyfar developers"
 author = "The pyfar developers"
-project_slug = "template_pyfar_package"
 
 # The version info for the project you're documenting, acts as replacement
 # for |version| and |release|, also used in various other places throughout
 # the built documents.
 #
 # The short X.Y version.
-version = template_pyfar_package.__version__
+version = template-pyfar-package.__version__
 # The full version, including alpha/beta/rc tags.
-release = template_pyfar_package.__version__
+release = template-pyfar-package.__version__
 
 # This is also used if you do content translation via gettext catalogs.
 # Usually you set "language" from the command line for these cases.
@@ -91,10 +93,6 @@ highlight_language = "python3"
 
 # intersphinx mapping
 intersphinx_mapping = {
-    
-    
-    
-    
     }
 
 # -- Options for HTML output -------------------------------------------------
@@ -105,13 +103,13 @@ html_static_path = ['_static']
 html_css_files = ['css/custom.css']
 html_js_files = ['js/custom.js']
 html_logo = 'resources/logos/pyfar_logos_fixed_size_pyfar.png'
-html_title = "template_pyfar_package"
+html_title = "template-pyfar-package"
 html_favicon = '_static/favicon.ico'
 
 # -- HTML theme options
 # https://pydata-sphinx-theme.readthedocs.io/en/stable/user_guide/layout.html
 html_sidebars = {
-  "template_pyfar_package": []
+  "template-pyfar-package": []
 }
 
 html_theme_options = {
@@ -142,7 +140,7 @@ html_context = {
 
 # redirect index to pyfar.html
 redirects = {
-     "index": "template_pyfar_package.html"
+     "index": "template-pyfar-package.html"
 }
 
 # -- download navbar and style files from gallery -----------------------------
@@ -185,13 +183,13 @@ with open("_static/header.rst", "rt") as fin:
 
 # replace readthedocs link with internal link to this documentation
 lines_mod = [
-    line.replace(f'https://{project_slug}.readthedocs.io', project_slug) for line in lines]
+    line.replace(f'https://{project}.readthedocs.io', project) for line in lines]
 
 # if not found, add this documentation link to the end of the list, so that
 # it is in the doc tree
-contains_project = any(project_slug in line for line in lines_mod)
+contains_project = any(project in line for line in lines_mod)
 if not contains_project:
-    lines_mod.append(f'   {project} <{project_slug}>\n')
+    lines_mod.append(f'   {project} <{project}>\n')
 
 # write the modified header file
 # to the doc\header.rst folder, so that it can be used in the documentation

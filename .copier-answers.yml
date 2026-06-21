@@ -1,0 +1,32 @@
+# Changes here will be overwritten by Copier; NEVER EDIT MANUALLY
+_commit: de4749b
+_src_path: https://github.com/pyfar/template-pyfar-package
+add_submodules: false
+additional_section_readme: ''
+apt_packages: ''
+author: The pyfar developers
+copyright_statement: 2025, The pyfar developers
+dependencies: copier,numpy
+docs_custom_import: ''
+git_username: pyfar
+gitignore_custom: ''
+intersphinx_mapping: []
+keywords: acoustics,pyfar,copier,template
+license: MIT
+logo_path_gallery: resources/logos/pyfar_logos_fixed_size_pyfar.png
+manifest_custom: ''
+minimum_python_version: '3.11'
+project_getting_started: "\n1. To use this template, first install copier with pip.\n\
+    \n    ```console\n    pip install copier\n    ```\n\n2. Run the following copier\
+    \ command to create a target directory at path_to_target_folder.\n   Note: Copier\
+    \ will overwrite files in the given directory if it already exists.\n\n    ```console\n\
+    \    copier copy https://github.com/pyfar/template-pyfar-package path_to_target_folder\n\
+    \    ```\n"
+project_installation_instructions: ''
+project_long_description: This template is used to keep all pyfar packages consistent
+    and provide a good staring point for new packages. It uses [copier](https://copier.readthedocs.io/en/stable/).
+project_short_description: Template to generate and update pyfar packages.
+project_slug: template-pyfar-package
+ruff_ignore: .git,docs
+use_pypi_deployment_with_ci: false
+version: 0.1.0
