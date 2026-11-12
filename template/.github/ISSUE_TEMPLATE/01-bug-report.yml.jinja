@@ -8,7 +8,7 @@ body:
       label: Is there an existing issue for this?
       description: Please search to see if an issue already exists for the bug you encountered.
       options:
-      - label: I looked for [similar existing issues](https://github.com/{{ git_username }}/{{ project_slug }}/issues).
+      - label: I looked for [similar existing or closed as "not planned" issues](https://github.com/{{ git_username }}/{{ project_slug }}/issues?q=is%3Aissue+%28is%3Aopen+OR+reason%3Anot-planned%29).
         required: true
 
   - type: textarea
