@@ -22,9 +22,7 @@ This template is used to keep all pyfar packages consistent and provide a good s
         :link: readme.html
         :text-align: center
         :padding: 0 0 3 3
-
-        **Getting Started**
-        ^^^^
+        :header: **Getting Started**
 
         .. raw:: html
 
@@ -36,9 +34,7 @@ This template is used to keep all pyfar packages consistent and provide a good s
         :link-type: ref
         :text-align: center
         :padding: 0 0 3 3
-
-        **API Reference**
-        ^^^^
+        :header: **API Reference**
 
         .. raw:: html
 
@@ -49,9 +45,7 @@ This template is used to keep all pyfar packages consistent and provide a good s
         :link: contributing.html
         :text-align: center
         :padding: 0 0 3 3
-
-        **Contributing**
-        ^^^^
+        :header: **Contributing**
 
         .. raw:: html
 
@@ -61,9 +55,7 @@ This template is used to keep all pyfar packages consistent and provide a good s
         :link: history.html
         :text-align: center
         :padding: 0 0 3 3
-
-        **History**
-        ^^^^
+        :header: **History**
 
         .. raw:: html
 
