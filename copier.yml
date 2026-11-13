@@ -11,6 +11,7 @@ project_long_description:
     type: str
     help: "A long description of the project. It will be added to the README.md of this project"
     default: ""
+    multiline: true
 
 project_short_description:
     type: str
@@ -19,19 +20,21 @@ project_short_description:
 project_getting_started:
     type: str
     help: "A short description of how to get started with the project"
+    multiline: true
 
 project_installation_instructions:
     type: str
     help: "A short description of how to install the package. It will be added to the README.md of this project"
+    multiline: true
     default: ""
 
 additional_section_readme:
-  type: str
-  help: |
+    type: str
+    help: |
         If necessary, add an extra section for the README.md file. It will be appended at the end, 
-        so it is recommended to start with a heading (e.g., ## References\n\nThis section...). 
-        Use \n for a new line.
-  default: ""
+        so it is recommended to start with a heading (e.g., ## References\n\nThis section...).
+    default: ""
+    multiline: true
 
 git_username:
     type: str
