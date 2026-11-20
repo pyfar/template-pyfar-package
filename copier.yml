@@ -1,3 +1,20 @@
+questionnaire_type:
+  type: str
+  help: |
+        Please select the type of questionnaire for creating your new project.
+
+        MINIMAL: The version with the fewest questions, which contains only essential parameters.
+        A good choice for a brand-new project.
+
+        FULL: The version with all currently available custom parameters for adapting existing projects
+        or creating projects that have already been carefully planned. Includes parameters for 
+        user-defined lines in docs/conf.py, pyproject.toml, MANIFEST.in, .gitignore and some other files.
+    
+  choices:
+    - minimal
+    - full
+  default: minimal
+
 author:
     type: str
     help: "The author or authors of the package, can also be an organization."
@@ -26,6 +43,7 @@ project_installation_instructions:
     default: ""
 
 additional_section_readme:
+  when: "{{ questionnaire_type == 'full' }}"
   type: str
   help: |
         If necessary, add an extra section for the README.md file. It will be appended at the end, 
@@ -136,10 +154,12 @@ ruff_ignore:
     default: ".git,docs"
 
 gitignore_custom:
+    when: "{{ questionnaire_type == 'full' }}"
     type: str
     help: |
         Enter a comma-separated list of files, directories, or file patterns for the .gitignore file. 
-    default: "your/custom/path/,"
+    placeholder: "your/custom/path/"
+    default: ""
 
 use_pypi_deployment_with_ci:
     type: bool
@@ -148,23 +168,29 @@ use_pypi_deployment_with_ci:
     default: true
 
 manifest_custom:
+    when: "{{ questionnaire_type == 'full' }}"
     type: str
     help: |
         Enter a comma-separated list of MANIFEST.in directives to include or exclude files and directories.
         Each entry should follow standard MANIFEST.in syntax.
+    placeholder: "recursive-include custom/path "
     default: ""
 
 docs_custom_import:
+    when: "{{ questionnaire_type == 'full' }}"
     type: str
     help: |
         Enter any additional Python modules that should be imported in the docs/conf.py file.
         Separate multiple modules with commas.
+    placeholder: "resources.conventions"
     default: ""
 
 add_submodules:
+    when: "{{ questionnaire_type == 'full' }}"
     type: bool
     help: "Would you like to add submodules to this project?"
     default: false
+    default: ""
 
 submodule_path:
     when: "{{ add_submodules }}"

@@ -9,11 +9,13 @@ requires-python = ">={{ minimum_python_version }}"
 authors = [
     { name = "The pyfar developers", email = "info@pyfar.org" }
 ]
+{%- if keywords != "" %}
 keywords = [
     {%- for key in keywords.split(',') %}
     "{{ key.strip() }}",
     {%- endfor %}
 ]
+{%- endif %}
 
 classifiers = [
     "Development Status :: 4 - Beta",
@@ -26,11 +28,13 @@ classifiers = [
     {%- endfor %}
 ]
 
+{%- if dependencies != "" %}
 dependencies = [
     {%- for key in dependencies.split(',') %}
     "{{ key.strip() }}",
     {%- endfor %}
 ]
+{%- endif %}
 
 [project.optional-dependencies]
 deploy = [
@@ -74,13 +78,15 @@ build-backend = "setuptools.build_meta"
 [tool.setuptools.packages]
 find = {}  # Scan the project directory with the default parameters
 
-
+{%- if ruff_ignore != "" %}
 [tool.ruff]
 exclude = [
 {%- for key in ruff_ignore.split(',') %}
     "{{ key.strip() }}",
 {%- endfor %}
 ]
+{%- endif %}
+
 line-length = 79
 lint.ignore = [
     "D200",   # One-line docstring should fit on one line with quotes
@@ -125,7 +131,6 @@ lint.select = [
 
 [tool.ruff.lint.pydocstyle]
 convention = "numpy"
-
 
 [tool.bumpversion]
 current_version = "{{ version }}"

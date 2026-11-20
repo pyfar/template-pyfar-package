@@ -124,7 +124,10 @@ docs/_static/js/custom.js
 docs/resources/logos/pyfar_logos_fixed_size_pyfar.png
 docs/{{ logo_path_gallery }}
 
+{%- if gitignore_custom != "" %}
+
 # custom 
 {%- for key in gitignore_custom.split(',') %}
 {{ key.strip() }}
 {%- endfor %}
+{%- endif %}
