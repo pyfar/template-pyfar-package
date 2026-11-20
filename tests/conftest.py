@@ -3,6 +3,7 @@ import pytest
 @pytest.fixture(scope='session')
 def copier_project_defaults():
     return {
+        "questionnaire_type":"full",
         "project_slug": "my_project",
         "project_long_description": "my_project_description",
         "project_getting_started": "This is how to get started.",
@@ -14,6 +15,7 @@ def copier_project_defaults():
         "copyright_statement": "2025, The pyfar developers",
         "project_short_description": "my_project_short_description",
         "python_versions": "['3.9', '3.10', '3.11', '3.12', '3.13', '3.14']",
+        "gitignore_custom": "your/custom/path/",
         "manifest_custom": "recursive-include your/custom/path/,"
         "recursive-exclude another/custom/path/'",
         "docs_custom_import": "module, anothermodule",

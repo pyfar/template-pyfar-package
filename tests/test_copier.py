@@ -230,3 +230,19 @@ def test_content_MANIFEST(default_project, desired):
     content = default_project.project_dir.joinpath(
                                     "MANIFEST.in").read_text()
     assert desired in content
+
+
+@pytest.mark.parametrize("desired", [
+    'additional_section_readme',
+    'gitignore_custom',
+    'manifest_custom',
+    'docs_custom_import',
+    'add_submodules',
+])
+def test_questionnaire_type_choice_minimal(copie, copier_project_defaults,
+                                           desired):
+
+    project = copie.copy(extra_answers={**copier_project_defaults,
+                                         "questionnaire_type":"minimal"})
+    content = project.project_dir.joinpath(".copier-answers.yml").read_text()
+    assert desired not in content
